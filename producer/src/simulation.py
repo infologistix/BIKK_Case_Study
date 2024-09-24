@@ -33,14 +33,20 @@ class transaktion_factory:
 
 
     def leihe_buch(self) -> tuple:
-        while 1:
-            book = np.random.randint(1, self.b_count)
-            if book in self.state:
-                continue
-            else:
-                customer = np.random.randint(1, self.c_count)
-                self.state[book] = customer
-                return (book, customer)
+        available_books = list(set(range(1,self.b_count)) - set(self.state))
+        book = np.random.choice(available_books)
+        customer = np.random.randint(1, self.c_count)
+        self.state[book] = customer
+        return (book, customer)
+    
+        # while 1:
+        #     book = np.random.randint(1, self.b_count)
+        #     if book in self.state:
+        #         continue
+        #     else:
+        #         customer = np.random.randint(1, self.c_count)
+        #         self.state[book] = customer
+        #         return (book, customer)
 
 
     def rückgabe_buch(self) -> tuple:
