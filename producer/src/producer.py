@@ -24,6 +24,7 @@ VERSION = "RB"
 INTERVALL = (0, 3)
 
 CONF = {'bootstrap.servers': 'broker:19092'}
+# CONF = {'bootstrap.servers': '0.0.0.0:9092'}
 
 
 def bew_version(version=VERSION):
