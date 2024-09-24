@@ -142,6 +142,7 @@ services:
     command: >
       sh -c "python connect.py &&
              python initial_load.py &&
+             python producer.py &&
              tail -F anything"
 
 
