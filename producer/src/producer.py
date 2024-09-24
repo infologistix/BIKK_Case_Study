@@ -80,14 +80,17 @@ try:
     for topic in topics:
         if topic=="Transaktion":
             counter += 1
-            if counter < 20:
+            if counter < 2:
                 buch, cust = action.leihe_buch()
                 produce_message(topic, "Leihe", buch, bs, cust)
             elif counter%100 == 0:
                 p.flush()
             else:
-                würfel = np.random.randint(1, 100)
-                if würfel < 55:
+                state = set(action.state)
+                ratio = 1. - len(state) / len(range(1,action.b_count))
+                ratio *= 0.7
+                würfel = np.random.rand()
+                if würfel < ratio:
                     buch, cust = action.leihe_buch()
                     produce_message(topic, "Leihe", buch, bs, cust)
                 else:
