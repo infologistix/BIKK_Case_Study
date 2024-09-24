@@ -60,6 +60,12 @@ def produce_message(topic: str,
     sleep(randint(*INTERVALL))
     return data
 
+def produce_ratio(topic: str, ratio) -> str:
+    data = str(ratio)
+    p.produce(topic, value=data, callback=delivery_report)
+    p.poll(0)
+    return data
+
 
 engine = get_connection()
 with engine.connect() as connection:
@@ -89,6 +95,7 @@ try:
                 state = set(action.state)
                 ratio = 1. - len(state) / len(range(1,action.b_count))
                 ratio *= 0.7
+                produce_ratio(topic, ratio)
                 würfel = np.random.rand()
                 if würfel < ratio:
                     buch, cust = action.leihe_buch()
