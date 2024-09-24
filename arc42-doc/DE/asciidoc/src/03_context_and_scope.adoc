@@ -3,6 +3,9 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-context-and-scope]]
 == Kontextabgrenzung
 
+
+image::03_Business-Context.drawio.png["Businesskontext hell"]
+
 ifdef::arc42help[]
 [role="arc42help"]
 ****

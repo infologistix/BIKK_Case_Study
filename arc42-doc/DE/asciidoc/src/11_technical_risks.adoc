@@ -3,6 +3,14 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-technical-risks]]
 == Risiken und technische Schulden
 
+=== Limitationen des Datenmodells
+
+Das Datenmodell bildet bisher folgende Dinge nicht ab 
+* mehrere Bestelladressen eines Kunden (erfordert weitere Tabelle)
+* Zustand eines Exemplars (erfordert weiteres Feld in Exemplartabelle)
+
+Das System prüft nicht, ob es "konkurrierende Leihen" gibt, d.h. ob ein Exemplar gleichzeitig von zwei Kunden ausgeliehen wird.
+
 ifdef::arc42help[]
 [role="arc42help"]
 ****

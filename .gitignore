@@ -1,5 +1,6 @@
 Case_Study_Aufgabenbeschreibung.pptx
 ./producer/src/__pycache__
+*.pyc
 .gradle
 *.iml
 /.nb-gradle/

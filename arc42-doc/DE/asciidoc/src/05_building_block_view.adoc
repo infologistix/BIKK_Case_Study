@@ -3,6 +3,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-building-block-view]]
 == Bausteinsicht
 
+
 ifdef::arc42help[]
 [role="arc42help"]
 ****
@@ -38,6 +39,8 @@ Siehe https://docs.arc42.org/section-5/[Bausteinsicht] in der online-Dokumentati
 endif::arc42help[]
 
 === Whitebox Gesamtsystem
+
+image::05-Building-Block-Lvl1.drawio.png["Bausteinsicht"]
 
 ifdef::arc42help[]
 [role="arc42help"]
