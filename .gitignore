@@ -1,2 +1,15 @@
 Case_Study_Aufgabenbeschreibung.pptx
 ./producer/src/__pycache__
+.gradle
+*.iml
+/.nb-gradle/
+gradle-app.setting
+.nb-gradle-properties
+.idea
+Arc42.code-workspace
+.DS_Store
+EN/build
+build
+*.bkp
+.vscode/settings.json
+*Zone.Identifier
