@@ -91,7 +91,9 @@ Dessen Überschrift ist jeweils der Namen dieser Blackbox.
 ****
 endif::arc42help[]
 
-==== <Name Blackbox 1>
+==== Core Datenmodell
+
+image::05-Core-Data-Model.drawio.png["Core Data Model"]
 
 ifdef::arc42help[]
 [role="arc42help"]
