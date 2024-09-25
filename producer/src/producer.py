@@ -5,6 +5,7 @@ from connect import get_connection
 from random import randint
 from simulation import transaktion_factory
 from time import sleep
+from datetime import datetime, timedelta
 
 
 """
@@ -22,6 +23,8 @@ NUM_SIMUL = 20000
 SEP = "; "
 VERSION = "RB"
 INTERVALL = (0, 3)
+START_TIME = "24/09/28"
+START_DATE = datetime.strptime(START_TIME, "%y/%m/%d")
 
 CONF = {'bootstrap.servers': 'broker:19092'}
 # CONF = {'bootstrap.servers': '0.0.0.0:9092'}
@@ -81,29 +84,38 @@ topic_choices = ["Neukunden", "Transaktion", "Bewertung"]
 topics = np.random.choice(topic_choices, NUM_SIMUL, p=[0.05, 0.85, 0.1])
 
 action = transaktion_factory(START_NUM_CUST, bs.shape[0])
-counter = 0
+counter = 0.
+
+buch_date_dict = {}
+date = START_DATE
 
 try:
     for topic in topics:
+        
         if topic=="Transaktion":
-            counter += 1
-            if counter < 2:
+            würfel = np.random.rand()
+            counter += 1.
+            delta = würfel * 6
+            date += timedelta(hours=int(delta))
+            #produce_ratio(topic, str(delta))
+            #produce_ratio(topic, str(date))
+            if counter < 6:
                 buch, cust = action.leihe_buch()
-                produce_message(topic, "Leihe", buch, bs, cust)
+                produce_message(topic, "Leihe; " + str(date), buch, bs, cust)
+                # produce_message(topic, "Leihe", buch, bs, cust, Ausleihdatum, Rückgabedatum)
             elif counter%100 == 0:
                 p.flush()
             else:
                 state = set(action.state)
-                ratio = 1. - len(state) / len(range(1,action.b_count))
+                ratio = 1. - len(state) / action.b_count
                 ratio *= 0.7
-                produce_ratio(topic, ratio)
-                würfel = np.random.rand()
+                # produce_ratio(topic, ratio)
                 if würfel < ratio:
                     buch, cust = action.leihe_buch()
-                    produce_message(topic, "Leihe", buch, bs, cust)
+                    produce_message(topic, "Leihe; " + str(date), buch, bs, cust)
                 else:
                     buch, cust = action.rückgabe_buch()
-                    produce_message(topic, "Rückgabe", buch, bs, cust)
+                    produce_message(topic, "Rückgabe; " + str(date), buch, bs, cust,)
 
         elif topic=="Neukunden":
             action.add_customer()
@@ -114,4 +126,3 @@ try:
             
 except KeyboardInterrupt:
     p.flush()
-
