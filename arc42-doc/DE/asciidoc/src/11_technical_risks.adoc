@@ -6,10 +6,14 @@ ifndef::imagesdir[:imagesdir: ../images]
 === Limitationen des Datenmodells
 
 Das Datenmodell bildet bisher folgende Dinge nicht ab 
+
 * mehrere Bestelladressen eines Kunden (erfordert weitere Tabelle)
 * Zustand eines Exemplars (erfordert weiteres Feld in Exemplartabelle)
 
 Das System prüft nicht, ob es "konkurrierende Leihen" gibt, d.h. ob ein Exemplar gleichzeitig von zwei Kunden ausgeliehen wird.
+
+Die Namen der Autoren sind im Quellsystem nicht nach Vor- und Nachname getrennt. 
+Eine korrekte automatische Trennung im ETL-Prozess ist aufgrund verschiedener Namensformate (mehrere Nachnamen; Zusätze wie de, von, van; Nachname Vorname) sehr schwierig umsetzbar. Eine Anpassung im Quellsystem wird empfohlen.
 
 ifdef::arc42help[]
 [role="arc42help"]

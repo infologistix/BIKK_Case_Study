@@ -44,6 +44,25 @@ Siehe https://docs.arc42.org/section-1/[Anforderungen und Ziele] in der online-D
 ****
 endif::arc42help[]
 
+Aufbau einer pilothaften Daten- und Reportingplattform für eine Bibliothek.
+
+
+=== Kundenwünsche
+
+Funktionen
+
+* Verwaltung von Ausleihe und Rückgabe
+* Verwaltung des Bücherbestandes
+* Stammdatenverwaltung der Kunden
+
+Auswertung
+
+* „Welche und wie viele Bücher haben welchen Status“?
+* „Wie viele Bücher welcher Kategorien haben welchen Status?“
+* „Wie stellt sich das Ausleihverhalten geografisch dar?“
+* „Welche Bücher/Genres/… sind besonders beliebt?“
+
+
 === Qualitätsziele
 
 ifdef::arc42help[]
@@ -65,6 +84,18 @@ Weil Qualitätsziele grundlegende Architekturentscheidungen oft maßgeblich beei
 Tabellarische Darstellung der Qualitätsziele mit möglichst konkreten Szenarien, geordnet nach Prioritäten.
 ****
 endif::arc42help[]
+
+Fachlich korrekte Abbildung von
+
+* Buchbestand
+* Kundenbestand ink. Mitliedsbeiträge
+* Leihen inkl. Versand, Mahnungen, Mahnungszahlungen
+* Bewertungen
+
+Erstellung von Reports basierend auf obigen Daten zu
+* 
+* 
+
 
 === Stakeholder
 
