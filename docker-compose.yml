@@ -144,6 +144,20 @@ services:
              python initial_load.py &&
              python producer.py &&
              tail -F anything"
+  consumer:
+    build: ./producer
+    restart: always
+    volumes:
+      - ./producer/src:/app
+    depends_on:
+      - zookeeper
+      - broker
+      - mysql
+      - producer
+    command: >
+      sh -c "python stage_clean_send.py &&
+             tail -F anything"
+
 
 
   mysql:
