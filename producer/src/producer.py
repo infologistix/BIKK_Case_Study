@@ -21,7 +21,7 @@ START_NUM_CUST = 250
 NUM_SIMUL = 20000
 SEP = "; "
 VERSION = "RB"
-INTERVALL = (0, 0.03)
+INTERVALL = (0, 3)
 
 CONF = {'bootstrap.servers': 'broker:19092'}
 # CONF = {'bootstrap.servers': '0.0.0.0:9092'}
@@ -57,8 +57,8 @@ def produce_message(topic: str,
     data = kind + data
     p.produce(topic, key=str(index), value=data, callback=delivery_report)
     p.poll(0)
-    # sleep(randint(*INTERVALL))
-    sleep(0.001)
+    sleep(randint(*INTERVALL))
+    # sleep(0.001)
     return data
 
 def produce_ratio(topic: str, ratio) -> str:
