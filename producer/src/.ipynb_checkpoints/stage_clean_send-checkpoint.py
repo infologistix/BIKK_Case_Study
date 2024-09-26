@@ -39,7 +39,6 @@ c = Consumer({
 })
 
 
-
 prod_Transaktion_cols={
     0:'Aktion',
     1:'Datum',
@@ -90,12 +89,13 @@ topics=["Transaktion", "Bewertung", "Neukunden"]
 
 
 
+
 while 1:
     
     dfd={}
     
     # # Konsumiere Daten
-    
+        
     for col, topic in zip(cols, topics):
         print(col, topic)
     
@@ -115,7 +115,7 @@ while 1:
     
         dfd[topic] = dfd[topic].reset_index(drop=True)
         #c.close()
-    
+        
     
     
     
@@ -124,81 +124,81 @@ while 1:
     
     # ### Transaktion
     
-    
-    
-    
-    # IDs zu int konvertieren
-    dfd['Transaktion']['ID_Exemplar'] = pd.to_numeric(dfd['Transaktion']['ID_Exemplar']).astype(int)
-    dfd['Transaktion']['ID_Kunde'] = pd.to_numeric(dfd['Transaktion']['ID_Kunde']).astype(int)
-    # Jahre zu int konvertieren
-    dfd['Transaktion']['Jahr'] = pd.to_numeric(dfd['Transaktion']['Jahr']).astype(int)
-    
-    # Fernleihe zu true oder false konvertieren
-    dfd['Transaktion']['Fernleihe'] = np.where(dfd['Transaktion']['Fernleihe'].astype(str).str.contains("None"), False, dfd['Transaktion']['Fernleihe'] )
-    dfd['Transaktion']['Fernleihe'] = np.where(dfd['Transaktion']['Fernleihe'].astype(str).str.contains("False"), False, dfd['Transaktion']['Fernleihe'] )
-    dfd['Transaktion']['Fernleihe'] = np.where(dfd['Transaktion']['Fernleihe'].astype(str).str.contains("True"), True, dfd['Transaktion']['Fernleihe'] )
+    if not dfd['Transaktion'].empty:
+
+        # IDs zu int konvertieren
+        dfd['Transaktion']['ID_Exemplar'] = pd.to_numeric(dfd['Transaktion']['ID_Exemplar']).astype('Int64', errors='ignore')
+        dfd['Transaktion']['ID_Kunde'] = pd.to_numeric(dfd['Transaktion']['ID_Kunde']).astype('Int64', errors='ignore')
+        # Jahre zu int konvertieren
+        dfd['Transaktion']['Jahr'] = pd.to_numeric(dfd['Transaktion']['Jahr']).astype('Int64', errors='ignore')
+        
+        # Fernleihe zu true oder false konvertieren
+        dfd['Transaktion']['Fernleihe'] = np.where(dfd['Transaktion']['Fernleihe'].astype(str).str.contains("None"), False, dfd['Transaktion']['Fernleihe'] )
+        dfd['Transaktion']['Fernleihe'] = np.where(dfd['Transaktion']['Fernleihe'].astype(str).str.contains("False"), False, dfd['Transaktion']['Fernleihe'] )
+        dfd['Transaktion']['Fernleihe'] = np.where(dfd['Transaktion']['Fernleihe'].astype(str).str.contains("True"), True, dfd['Transaktion']['Fernleihe'] )
 
     # ### Bewertung
     
-    
-    
-    
-    # IDs zu int konvertieren
-    dfd['Bewertung']['ID_Kunde'] = pd.to_numeric(dfd['Bewertung']['ID_Kunde']).astype(int)
-    dfd['Bewertung']['ID_Buch'] = pd.to_numeric(dfd['Bewertung']['ID_Buch']).astype(int)
-    dfd['Bewertung']['Wertung'] = pd.to_numeric(dfd['Bewertung']['Wertung']).astype(int)
-    
-    
+    if not dfd['Bewertung'].empty:
+        
+        # IDs zu int konvertieren
+        dfd['Bewertung']['ID_Kunde'] = pd.to_numeric(dfd['Bewertung']['ID_Kunde']).astype('Int64', errors='ignore')
+        dfd['Bewertung']['ID_Buch'] = pd.to_numeric(dfd['Bewertung']['ID_Buch']).astype('Int64', errors='ignore')
+        dfd['Bewertung']['Wertung'] = pd.to_numeric(dfd['Bewertung']['Wertung']).astype('Int64', errors='ignore')
+        
+        
     # ### Neukunden
-    
-    
-    # IDs zu int konvertieren
-    dfd['Neukunden']['ID_Kunde'] = pd.to_numeric(dfd['Neukunden']['ID_Kunde']).astype(int)
-    dfd['Neukunden']['Kundennr'] = pd.to_numeric(dfd['Neukunden']['Kundennr']).astype(int)
-    
-    # Anreden konsistent machen 
-    dfd['Neukunden']['Anrede'] = dfd['Neukunden']['Anrede'].replace(['Fr\.'],'Frau', regex=True)
-    dfd['Neukunden']['Anrede'] = dfd['Neukunden']['Anrede'].replace(['Hr\.'],'Herr', regex=True)
-    # Titel: "None" to NaN
-    dfd['Neukunden']['Titel']  = np.where(dfd['Neukunden']['Titel'].str.contains("None"), np.nan, dfd['Neukunden']['Titel'] )
-    # Vorname_2: "nan" to NaN
-    dfd['Neukunden']['Vorname_2']  = np.where(dfd['Neukunden']['Vorname_2'].str.contains("nan"), np.nan, dfd['Neukunden']['Vorname_2'] )
-    # Hausnr: "nan" to NaN
-    dfd['Neukunden']['Hausnr']  = np.where(dfd['Neukunden']['Hausnr'].str.contains("nan"), np.nan, dfd['Neukunden']['Hausnr'] )
-    # 4-stellige PLZ mit "0" präfixen 
-    dfd['Neukunden']['PLZ']    = dfd['Neukunden']['PLZ'].str.strip().str.rjust(5, '0')
-    
-    # Hausnummern aus Strasse-Spalte extrahieren
-    def extract_hausnr(strasse):
-      if pd.isna(strasse):
-        return np.nan
-      parts = strasse.split()
-      if len(parts) > 1 and parts[-1].isdigit():
-        return parts[-1]
-      else:
-        return np.nan
-    #Apply extract_hausnr, wenn 'Hausnr' NaN und entferne die Hausnummern aus der Strasse Spalte
-    dfd['Neukunden'].loc[dfd['Neukunden']['Hausnr'].isnull(), 'Hausnr'] = dfd['Neukunden'].loc[dfd['Neukunden']['Hausnr'].isnull(), 'Strasse'].apply(extract_hausnr)
-    dfd['Neukunden']['Strasse'] = dfd['Neukunden']['Strasse'].str.split(expand=True)[0]
-    # Convert Hausnr to int
-    dfd['Neukunden']['Hausnr'] = pd.to_numeric(dfd['Neukunden']['Hausnr']).astype(int)
-    
-    # Geschlecht konsistent machen 
-    dfd['Neukunden']['Geschlecht'] = dfd['Neukunden']['Geschlecht'].str.strip().replace(["^w$", "^W$"],'Weiblich', regex=True)
-    dfd['Neukunden']['Geschlecht'] = dfd['Neukunden']['Geschlecht'].str.strip().replace(["^m$", "^M$"],'Männlich', regex=True)
-    
-    # Datumsspalten konsistent machen
-    dfd['Neukunden']['Geburtsdatum'] = pd.to_datetime(dfd['Neukunden']['Geburtsdatum'],format='mixed', dayfirst=True)
-    dfd['Neukunden']['PersoValidTo'] = pd.to_datetime(dfd['Neukunden']['PersoValidTo'],format='mixed', dayfirst=True)
-    
-    
+    if not dfd['Neukunden'].empty:
+        
+        # IDs zu int konvertieren
+        dfd['Neukunden']['ID_Kunde'] = pd.to_numeric(dfd['Neukunden']['ID_Kunde']).astype('Int64', errors='ignore')
+        dfd['Neukunden']['Kundennr'] = pd.to_numeric(dfd['Neukunden']['Kundennr']).astype('Int64', errors='ignore')
+        
+        # Anreden konsistent machen 
+        if dfd['Neukunden']['Anrede'].str.contains('Fr\.', regex=True).any()==True:
+            dfd['Neukunden']['Anrede'] = dfd['Neukunden']['Anrede'].replace(['Fr\.'],'Frau', regex=True)
+        if dfd['Neukunden']['Anrede'].str.contains('Hr\.', regex=True).any()==True:
+            dfd['Neukunden']['Anrede'] = dfd['Neukunden']['Anrede'].replace(['Hr\.'],'Herr', regex=True)
+        # Titel: "None" to NaN
+        dfd['Neukunden']['Titel']  = np.where(dfd['Neukunden']['Titel'].str.contains("None"), np.nan, dfd['Neukunden']['Titel'] )
+        # Vorname_2: "nan" to NaN
+        dfd['Neukunden']['Vorname_2']  = np.where(dfd['Neukunden']['Vorname_2'].str.contains("nan"), np.nan, dfd['Neukunden']['Vorname_2'] )
+        # Hausnr: "nan" to NaN
+        dfd['Neukunden']['Hausnr'] = dfd['Neukunden']['Hausnr'].astype(str)
+        dfd['Neukunden']['Hausnr']  = np.where(dfd['Neukunden']['Hausnr'].str.contains("nan"), np.nan, dfd['Neukunden']['Hausnr'] )
+        # 4-stellige PLZ mit "0" präfixen 
+        dfd['Neukunden']['PLZ']    = dfd['Neukunden']['PLZ'].str.strip().str.rjust(5, '0')
+        
+        # Hausnummern aus Strasse-Spalte extrahieren
+        def extract_hausnr(strasse):
+          if pd.isna(strasse):
+            return np.nan
+          parts = strasse.split()
+          if len(parts) > 1 and parts[-1].isdigit():
+            return parts[-1]
+          else:
+            return np.nan
+        #Apply extract_hausnr, wenn 'Hausnr' NaN und entferne die Hausnummern aus der Strasse Spalte
+        dfd['Neukunden'].loc[dfd['Neukunden']['Hausnr'].isnull(), 'Hausnr'] = dfd['Neukunden'].loc[dfd['Neukunden']['Hausnr'].isnull(), 'Strasse'].apply(extract_hausnr)
+        dfd['Neukunden']['Strasse'] = dfd['Neukunden']['Strasse'].str.split(expand=True)[0]
+        # Convert Hausnr to int
+        dfd['Neukunden']['Hausnr'] = pd.to_numeric(dfd['Neukunden']['Hausnr']).astype(int)
+        
+        # Geschlecht konsistent machen 
+        #if not dfd['Neukunden']['Geschlecht'].filter(regex=).empty:
+        dfd['Neukunden']['Geschlecht'] = dfd['Neukunden']['Geschlecht'].str.strip().replace(["^w$", "^W$"],'Weiblich', regex=True)
+        dfd['Neukunden']['Geschlecht'] = dfd['Neukunden']['Geschlecht'].str.strip().replace(["^m$", "^M$"],'Männlich', regex=True)
+        
+        # Datumsspalten konsistent machen
+        dfd['Neukunden']['Geburtsdatum'] = pd.to_datetime(dfd['Neukunden']['Geburtsdatum'],format='mixed', dayfirst=True)
+        dfd['Neukunden']['PersoValidTo'] = pd.to_datetime(dfd['Neukunden']['PersoValidTo'],format='mixed', dayfirst=True)
+        
+        
     # ### Bestand
-    
-    
-    
-    # Jahre zu int konvertieren
-    df_bestand['Jahr'] = pd.to_numeric(df_bestand['Jahr']).astype('Int64', errors='ignore')
-    
+    if not df_bestand.empty:
+        # Jahre zu int konvertieren
+        df_bestand['Jahr'] = pd.to_numeric(df_bestand['Jahr']).astype('Int64', errors='ignore')
+        
     
     
     
@@ -332,8 +332,8 @@ while 1:
     
     USER = 'root'
     PASSWORD = 'root'
-    HOST = 'mysql57'          # see yml file
-    PORT = 3306
+    HOST = 'mysql57' # 'localhost'          # see yml file
+    PORT = 3306 # 3307
     DATABASE = 'test_db_1'
      
     

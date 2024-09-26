@@ -1,0 +1,204 @@
+Leihe; 2024-09-28 01:00:00; False; 14; 2077; Das Ich und das Es; Sigmund Freud; 1923.0; Sachbuch; ebA04532; Xcx74905
+Leihe; 2024-09-28 05:00:00; True; 182; 667; Der letzte Held; Thomas Louis Berger; 1964.0; Roman; AHZ94186; OVy95137
+Leihe; 2024-09-28 05:00:00; False; 226; 4154; Bel-Ami; Guy de Maupassant; 1885.0; Roman; YtX71620; Yov18742
+Leihe; 2024-09-28 09:00:00; True; 218; 6891; Wilhelm Tell; Friedrich Schiller; 1804.0; Drama; RGF95216; ETJ17506
+Leihe; 2024-09-28 13:00:00; True; 30; 1492; Herz der Finsternis; Joseph Conrad; 1899.0; Erzählung; OVd34768; Hec59830
+Rückgabe; 2024-09-28 17:00:00; None; 226; 4154; Bel-Ami; Guy de Maupassant; 1885.0; Roman; YtX71620; Yov18742
+Leihe; 2024-09-28 17:00:00; False; 191; 3777; Die Revolution entlässt ihre Kinder; Wolfgang Leonhard; 1955.0; Autobiografie; iIC26970; ejJ21536
+Leihe; 2024-09-28 19:00:00; False; 91; 998; Ich und Du; Martin Buber; 1923.0; Philosophie; egj25386; dJK13742
+Leihe; 2024-09-28 20:00:00; False; 34; 5388; Die Insel Felsenburg; Johann Gottfried Schnabel; 1731.0; Roman; JEp46759; tWz34968
+Rückgabe; 2024-09-29 01:00:00; None; 218; 6891; Wilhelm Tell; Friedrich Schiller; 1804.0; Drama; RGF95216; ETJ17506
+Leihe; 2024-09-29 02:00:00; False; 143; 5731; Jenseits von Eden; John Steinbeck; 1952.0; Roman; ZSP30795; rgv72603
+Leihe; 2024-09-29 02:00:00; False; 53; 6118; Die vollkommene Ehe; Theodoor Hendrik van de Velde; 1926.0; Sachbuch; nYm96847; dIa38740
+Rückgabe; 2024-09-29 07:00:00; None; 182; 667; Der letzte Held; Thomas Louis Berger; 1964.0; Roman; AHZ94186; OVy95137
+Leihe; 2024-09-29 08:00:00; False; 187; 6562; Eifel-Liebe; Jacques Berndorf; 2002.0; Roman; qBZ67804; CFU80741
+Leihe; 2024-09-29 11:00:00; False; 228; 5091; Kuttel Daddeldu; Joachim Ringelnatz; 1920.0; Lyrik; KAY98537; LWo52138
+Leihe; 2024-09-29 13:00:00; False; 32; 5707; Ungefähre Landschaft; Peter Stamm; 2001.0; Roman; fUp42391; naL62953
+Leihe; 2024-09-29 13:00:00; False; 193; 3257; Alexis Sorbas; Nikos Kazantzakis; 1946.0; Roman; xBe51384; PDC64938
+Leihe; 2024-09-29 17:00:00; False; 105; 3163; Dubliner; James Joyce; 1914.0; Erzählung; MLt78260; MBY48035
+Rückgabe; 2024-09-29 21:00:00; None; 143; 5731; Jenseits von Eden; John Steinbeck; 1952.0; Roman; ZSP30795; rgv72603
+Leihe; 2024-09-30 00:00:00; False; 183; 3548; Der Verrückte des Zaren; Jaan Kross; 1978.0; Roman; GwK65813; VGX76831
+Rückgabe; 2024-09-30 05:00:00; None; 228; 5091; Kuttel Daddeldu; Joachim Ringelnatz; 1920.0; Lyrik; KAY98537; LWo52138
+Leihe; 2024-09-30 05:00:00; False; 81; 4891; Wir amüsieren uns zu Tode; Neil Postman; 1985.0; Sachbuch; HeE05218; NSK67092
+Leihe; 2024-09-30 07:00:00; False; 41; 1421; Sämtliche Werke des Wandsbecker Boten; Matthias Claudius; 1775.0; Lyrik; yrV08951; CLp20896
+Leihe; 2024-09-30 09:00:00; False; 180; 5247; Der Fragebogen; Ernst von Salomon; 1951.0; Roman; TBf25863; FsU59407
+Rückgabe; 2024-09-30 13:00:00; None; 183; 3548; Der Verrückte des Zaren; Jaan Kross; 1978.0; Roman; GwK65813; VGX76831
+Leihe; 2024-09-30 14:00:00; False; 247; 544; Fahrraddiebe; Luigi Bartolini; 1946.0; Roman; ICV59342; UzQ12870
+Rückgabe; 2024-09-30 19:00:00; None; 41; 1421; Sämtliche Werke des Wandsbecker Boten; Matthias Claudius; 1775.0; Lyrik; yrV08951; CLp20896
+Leihe; 2024-09-30 22:00:00; False; 200; 2338; Burgers Tochter; Nadine Gordimer; 1979.0; Roman; qzt07318; pgu28796
+Leihe; 2024-10-01 00:00:00; False; 150; 69; Guzmán de Alfarache; Mateo Alemán; 1599.0; Roman; Xeb13947; qzE15276
+Leihe; 2024-10-01 03:00:00; False; 225; 5651; Der moderne Kapitalismus; Werner Sombart; 1902.0; Sachbuch; jwF72958; YtL60892
+Leihe; 2024-10-01 04:00:00; False; 163; 1652; Die Dämonen; Heimito von Doderer; 1956.0; Roman; FLc30695; XKo35218
+Leihe; 2024-10-01 07:00:00; False; 50; 4935; Eugen Onegin; Alexander Puschkin; 1833.0; Roman; AFZ63214; aQj50748
+Leihe; 2024-10-01 07:00:00; False; 29; 1071; Die Pilgerreise; John Bunyan; 1678.0; Roman; Ppt28136; GcZ94537
+Leihe; 2024-10-01 09:00:00; False; 226; 4022; Doktor Faustus; Thomas Mann; 1947.0; Roman; ZGV09475; Plf68319
+Leihe; 2024-10-01 12:00:00; False; 13; 1673; Schuld und Sühne; Fjodor Dostojewski; 1866.0; Roman; kep74158; Ndm49650
+Leihe; 2024-10-01 15:00:00; False; 203; 1341; Peter Schlemihls wundersame Geschichte; Adelbert von Chamisso; 1814.0; Erzählung; uch20569; Fqd68901
+Leihe; 2024-10-01 17:00:00; False; 44; 3754; Was tun?; Wladimir Iljitsch Lenin; 1902.0; Sachbuch; Ars32756; bnG80693
+Rückgabe; 2024-10-01 22:00:00; None; 163; 1652; Die Dämonen; Heimito von Doderer; 1956.0; Roman; FLc30695; XKo35218
+Leihe; 2024-10-02 01:00:00; False; 184; 1520; Homo sociologicus; Ralf Dahrendorf; 1958.0; Sachbuch; ExR64107; wNZ72459
+Rückgabe; 2024-10-02 06:00:00; None; 180; 5247; Der Fragebogen; Ernst von Salomon; 1951.0; Roman; TBf25863; FsU59407
+Leihe; 2024-10-02 07:00:00; False; 119; 1824; Aus dem Leben eines Taugenichts; Joseph von Eichendorff; 1826.0; Novelle; Tqf53987; ZLA40638
+Leihe; 2024-10-02 07:00:00; False; 109; 383; Der Report der Magd; Margaret Atwood; 1985.0; Roman; TpI04786; eaW28916
+Rückgabe; 2024-10-02 12:00:00; None; 225; 5651; Der moderne Kapitalismus; Werner Sombart; 1902.0; Sachbuch; jwF72958; YtL60892
+Rückgabe; 2024-10-02 16:00:00; None; 14; 2077; Das Ich und das Es; Sigmund Freud; 1923.0; Sachbuch; ebA04532; Xcx74905
+Leihe; 2024-10-02 17:00:00; False; 168; 2130; Die Wahrheit über den Fall D.; Carlo Lucentini, Lucentini Franco Fruttero; 1989.0; Roman; rdu62783; uxK70124
+Rückgabe; 2024-10-02 21:00:00; None; 109; 383; Der Report der Magd; Margaret Atwood; 1985.0; Roman; TpI04786; eaW28916
+Rückgabe; 2024-10-03 01:00:00; None; 119; 1824; Aus dem Leben eines Taugenichts; Joseph von Eichendorff; 1826.0; Novelle; Tqf53987; ZLA40638
+Rückgabe; 2024-10-03 06:00:00; None; 150; 69; Guzmán de Alfarache; Mateo Alemán; 1599.0; Roman; Xeb13947; qzE15276
+Leihe; 2024-10-03 08:00:00; False; 243; 2071; Die Traumdeutung; Sigmund Freud; 1900.0; Sachbuch; EPc13029; FqP09374
+Leihe; 2024-10-03 09:00:00; False; 2; 717; Aus dem Wörterbuch des Teufels; Ambrose Bierce; 1906.0; Aphorismen; ZCT54180; cUq62579
+Leihe; 2024-10-03 12:00:00; False; 117; 3898; Unter dem Vulkan; Malcolm Lowry; 1947.0; Roman; Azx30265; ulT83592
+Leihe; 2024-10-03 12:00:00; False; 176; 4254; Jürg Jenatsch; Conrad Ferdinand Meyer; 1876.0; Roman; wAs12904; DxQ35179
+Leihe; 2024-10-03 12:00:00; False; 86; 6486; Ich zähmte die Wölfin; Marguerite Yourcenar; 1951.0; Roman; HgF53987; jeW03472
+Rückgabe; 2024-10-03 16:00:00; None; 32; 5707; Ungefähre Landschaft; Peter Stamm; 2001.0; Roman; fUp42391; naL62953
+Rückgabe; 2024-10-03 20:00:00; None; 44; 3754; Was tun?; Wladimir Iljitsch Lenin; 1902.0; Sachbuch; Ars32756; bnG80693
+Leihe; 2024-10-03 20:00:00; False; 70; 4816; Mattia Pascal; Luigi Pirandello; 1904.0; Roman; eVG51729; xWz19638
+Leihe; 2024-10-03 23:00:00; False; 83; 6904; Romeo und Julia; William Shakespeare; 1597.0; Drama; rNO60275; oqR03498
+Rückgabe; 2024-10-04 04:00:00; None; 83; 6904; Romeo und Julia; William Shakespeare; 1597.0; Drama; rNO60275; oqR03498
+Leihe; 2024-10-04 06:00:00; False; 187; 1206; Die Blendung; Elias Canetti; 1935.0; Roman; xUf67058; qDT02531
+Rückgabe; 2024-10-04 11:00:00; None; 29; 1071; Die Pilgerreise; John Bunyan; 1678.0; Roman; Ppt28136; GcZ94537
+Rückgabe; 2024-10-04 15:00:00; None; 203; 1341; Peter Schlemihls wundersame Geschichte; Adelbert von Chamisso; 1814.0; Erzählung; uch20569; Fqd68901
+Leihe; 2024-10-04 15:00:00; False; 30; 548; Die Gärten der Finzi-Contini; Giorgio Bassani; 1962.0; Roman; Fgx94375; aUi09687
+Leihe; 2024-10-04 16:00:00; False; 140; 3134; Jahrestage; Uwe Johnson; 1970.0; Roman; rfi64937; vJP79821
+Rückgabe; 2024-10-04 21:00:00; None; 81; 4891; Wir amüsieren uns zu Tode; Neil Postman; 1985.0; Sachbuch; HeE05218; NSK67092
+Leihe; 2024-10-04 22:00:00; False; 193; 4681; Mein Michael; Amos Oz; 1968.0; Roman; pIm56418; lUS18950
+Leihe; 2024-10-05 02:00:00; False; 214; 1579; Oliver Twist; Charles Dickens; 1837.0; Roman; Fqa98307; KuA50923
+Leihe; 2024-10-05 02:00:00; False; 229; 444; Anrufung des Großen Bären; Ingeborg Bachmann; 1956.0; Lyrik; Xvs82317; RGX18527
+Rückgabe; 2024-10-05 06:00:00; None; 53; 6118; Die vollkommene Ehe; Theodoor Hendrik van de Velde; 1926.0; Sachbuch; nYm96847; dIa38740
+Leihe; 2024-10-05 06:00:00; False; 184; 2756; Die Vollidioten; Eckhard Henscheid; 1973.0; Roman; lpq82361; csg36075
+Leihe; 2024-10-05 07:00:00; False; 143; 1014; Das Boot; Lothar-Günther Buchheim; 1973.0; Roman; qiD97012; pXD93167
+Leihe; 2024-10-05 08:00:00; False; 239; 1028; Die gute Erde; Pearl S. Buck; 1931.0; Roman; aTB26074; Heo37405
+Leihe; 2024-10-05 10:00:00; False; 36; 3239; Kritik der reinen Vernunft; Immanuel Kant; 1781.0; Philosophie; ndH05827; FEG93406
+Leihe; 2024-10-05 11:00:00; False; 109; 6321; Die Zeitmaschine; H. G. Wells; 1895.0; Roman; GmA38029; Giw79260
+Leihe; 2024-10-05 13:00:00; False; 111; 5582; Pietr der Lette; Georges Simenon; 1931.0; Roman; xnd96057; vDL83504
+Leihe; 2024-10-05 13:00:00; False; 30; 4104; Mein Herz so weiß; Javier Marías; 1992.0; Roman; kfe29768; ObH50219
+Rückgabe; 2024-10-05 17:00:00; None; 200; 2338; Burgers Tochter; Nadine Gordimer; 1979.0; Roman; qzt07318; pgu28796
+Rückgabe; 2024-10-05 21:00:00; None; 2; 717; Aus dem Wörterbuch des Teufels; Ambrose Bierce; 1906.0; Aphorismen; ZCT54180; cUq62579
+Leihe; 2024-10-05 22:00:00; False; 168; 3637; Das geteilte Selbst; Ronald D. Laing; 1960.0; Sachbuch; TFC53706; Nxk93027
+Leihe; 2024-10-06 01:00:00; False; 121; 4101; Mein Herz so weiß; Javier Marías; 1992.0; Roman; fOr47960; pZw27306
+Leihe; 2024-10-06 01:00:00; False; 140; 250; Nibelungenlied; Unbekannt; 1200.0; Epos; Hsu59201; FJn38174
+Rückgabe; 2024-10-06 05:00:00; None; 168; 3637; Das geteilte Selbst; Ronald D. Laing; 1960.0; Sachbuch; TFC53706; Nxk93027
+Leihe; 2024-10-06 08:00:00; False; 241; 588; Molloy; Samuel Beckett; 1951.0; Roman; vdq21394; fJC48965
+Leihe; 2024-10-06 10:00:00; False; 240; 1586; Oliver Twist; Charles Dickens; 1837.0; Roman; fgy38642; hyw29875
+Rückgabe; 2024-10-06 14:00:00; None; 240; 1586; Oliver Twist; Charles Dickens; 1837.0; Roman; fgy38642; hyw29875
+Rückgabe; 2024-10-06 18:00:00; None; 191; 3777; Die Revolution entlässt ihre Kinder; Wolfgang Leonhard; 1955.0; Autobiografie; iIC26970; ejJ21536
+Leihe; 2024-10-06 18:00:00; False; 161; 1002; Ich und Du; Martin Buber; 1923.0; Philosophie; Tyu69325; KEf75241
+Leihe; 2024-10-06 21:00:00; False; 196; 5907; Jahrmarkt der Eitelkeit; William Makepeace Thackeray; 1848.0; Roman; JtA09637; erP28106
+Leihe; 2024-10-06 22:00:00; False; 153; 2552; Der Malteser Falke; Dashiell Hammett; 1930.0; Roman; nuB73658; uUI79582
+Leihe; 2024-10-06 23:00:00; False; 35; 505; Nachtgewächs; Djuna Barnes; 1936.0; Roman; lWq59274; Ulg42189
+Leihe; 2024-10-07 00:00:00; False; 145; 6956; Der Geliebte der Mutter; Urs Widmer; 2000.0; Roman; bZO46328; EbQ71398
+Leihe; 2024-10-07 04:00:00; False; 156; 6907; Maigret und die alte Dame; Georges Simenon; 1951.0; Roman; McT01947; LcE95461
+Leihe; 2024-10-07 07:00:00; False; 18; 2057; Die Götter dürsten; Anatole France; 1912.0; Roman; zGa82910; RQD47608
+Leihe; 2024-10-07 10:00:00; False; 116; 3192; In Stahlgewittern; Ernst Jünger; 1920.0; Tagebuch; hqg84529; rOX09513
+Leihe; 2024-10-07 10:00:00; False; 93; 732; Morels Erfindung; Adolfo Bioy Casares; 1940.0; Roman; CUQ76348; Vnz65183
+Rückgabe; 2024-10-07 14:00:00; None; 184; 2756; Die Vollidioten; Eckhard Henscheid; 1973.0; Roman; lpq82361; csg36075
+Leihe; 2024-10-07 17:00:00; False; 18; 1807; Ein Winter in Hakkari; Ferit Edgü; 1977.0; Roman; eRK40392; yvE50284
+Leihe; 2024-10-07 18:00:00; False; 153; 1410; Der Zweite Weltkrieg; Winston Churchill; 1948.0; Sachbuch; PHN17360; RBZ40738
+Leihe; 2024-10-07 21:00:00; False; 84; 1219; Die gerettete Zunge; Elias Canetti; 1977.0; Autobiografie; MPG36157; Xcl13257
+Leihe; 2024-10-07 22:00:00; False; 212; 6439; Schau heimwärts, Engel!; Thomas Wolfe; 1929.0; Roman; hZI52680; Yhe64835
+Rückgabe; 2024-10-08 05:00:00; None; 226; 4022; Doktor Faustus; Thomas Mann; 1947.0; Roman; ZGV09475; Plf68319
+Rückgabe; 2024-10-08 09:00:00; None; 156; 6907; Maigret und die alte Dame; Georges Simenon; 1951.0; Roman; McT01947; LcE95461
+Leihe; 2024-10-08 10:00:00; False; 75; 2204; (Meier) Helmbrecht; Wernher der Gartenaere; 1237.0; Versepos; DXQ32704; wOJ91805
+Leihe; 2024-10-08 13:00:00; False; 98; 5379; Zettels Traum; Arno Schmidt; 1970.0; Roman; xkf20984; Rkz70412
+Leihe; 2024-10-08 16:00:00; False; 93; 2608; Das Wüten der ganzen Welt; Maarten ’t Hart; 1993.0; Roman; uHL63210; ziP76931
+Leihe; 2024-10-08 19:00:00; False; 92; 5953; Über die Demokratie in Amerika; Alexis de Tocqueville; 1835.0; Sachbuch; Hmf81590; DtK75096
+Leihe; 2024-10-08 20:00:00; False; 116; 4233; Schubumkehr; Robert Menasse; 1995.0; Roman; QUw50162; OKg30129
+Rückgabe; 2024-10-09 00:00:00; None; 98; 5379; Zettels Traum; Arno Schmidt; 1970.0; Roman; xkf20984; Rkz70412
+Rückgabe; 2024-10-09 05:00:00; None; 13; 1673; Schuld und Sühne; Fjodor Dostojewski; 1866.0; Roman; kep74158; Ndm49650
+Rückgabe; 2024-10-09 10:00:00; None; 93; 2608; Das Wüten der ganzen Welt; Maarten ’t Hart; 1993.0; Roman; uHL63210; ziP76931
+Leihe; 2024-10-09 12:00:00; False; 218; 2273; Die Wahlverwandtschaften; Johann Wolfgang von Goethe; 1809.0; Roman; XGF26348; swA80519
+Leihe; 2024-10-09 15:00:00; False; 257; 5063; Umgang mit der Angst; Horst-Eberhard Richter; 1992.0; Sachbuch; nir93168; lHy04269
+Rückgabe; 2024-10-09 20:00:00; None; 140; 250; Nibelungenlied; Unbekannt; 1200.0; Epos; Hsu59201; FJn38174
+Rückgabe; 2024-10-10 01:00:00; None; 257; 5063; Umgang mit der Angst; Horst-Eberhard Richter; 1992.0; Sachbuch; nir93168; lHy04269
+Leihe; 2024-10-10 04:00:00; False; 164; 3162; Dubliner; James Joyce; 1914.0; Erzählung; PVo40398; TmD13708
+Rückgabe; 2024-10-10 08:00:00; None; 30; 1492; Herz der Finsternis; Joseph Conrad; 1899.0; Erzählung; OVd34768; Hec59830
+Leihe; 2024-10-10 08:00:00; False; 206; 2989; Unter dem Tagmond; Keri Hulme; 1984.0; Roman; MLC86320; Azb50371
+Rückgabe; 2024-10-10 12:00:00; None; 36; 3239; Kritik der reinen Vernunft; Immanuel Kant; 1781.0; Philosophie; ndH05827; FEG93406
+Leihe; 2024-10-10 13:00:00; False; 137; 118; Sansibar oder der letzte Grund; Alfred Andersch; 1957.0; Roman; XoI32508; Rbe20978
+Leihe; 2024-10-10 14:00:00; False; 97; 2642; Märchenalmanach auf das Jahr 1828; Wilhelm Hauff; 1828.0; Erzählung; NCm24013; djC19632
+Leihe; 2024-10-10 17:00:00; False; 159; 5368; Der Vorleser; Bernhard Schlink; 1995.0; Roman; yTb82690; nOr75249
+Rückgabe; 2024-10-10 21:00:00; None; 30; 548; Die Gärten der Finzi-Contini; Giorgio Bassani; 1962.0; Roman; Fgx94375; aUi09687
+Rückgabe; 2024-10-11 01:00:00; None; 93; 732; Morels Erfindung; Adolfo Bioy Casares; 1940.0; Roman; CUQ76348; Vnz65183
+Rückgabe; 2024-10-11 05:00:00; None; 176; 4254; Jürg Jenatsch; Conrad Ferdinand Meyer; 1876.0; Roman; wAs12904; DxQ35179
+Rückgabe; 2024-10-11 10:00:00; None; 159; 5368; Der Vorleser; Bernhard Schlink; 1995.0; Roman; yTb82690; nOr75249
+Leihe; 2024-10-11 10:00:00; False; 229; 3439; Die Marquise von O...; Heinrich von Kleist; 1808.0; Novelle; zfR93605; AXY19743
+Leihe; 2024-10-11 11:00:00; False; 252; 2439; Der dritte Mann; Graham Greene; 1950.0; Erzählung; lpA48359; ZUD36785
+Rückgabe; 2024-10-11 16:00:00; None; 212; 6439; Schau heimwärts, Engel!; Thomas Wolfe; 1929.0; Roman; hZI52680; Yhe64835
+Leihe; 2024-10-11 17:00:00; False; 171; 6750; Nora oder Ein Puppenheim; Henrik Ibsen; 1879.0; Drama; bkf56213; azG95307
+Rückgabe; 2024-10-11 22:00:00; None; 168; 2130; Die Wahrheit über den Fall D.; Carlo Lucentini, Lucentini Franco Fruttero; 1989.0; Roman; rdu62783; uxK70124
+Rückgabe; 2024-10-12 03:00:00; None; 116; 4233; Schubumkehr; Robert Menasse; 1995.0; Roman; QUw50162; OKg30129
+Rückgabe; 2024-10-12 07:00:00; None; 70; 4816; Mattia Pascal; Luigi Pirandello; 1904.0; Roman; eVG51729; xWz19638
+Leihe; 2024-10-12 10:00:00; False; 196; 2037; Die Ordnung der Dinge; Michel Foucault; 1966.0; Philosophie; EFA56238; mxg31587
+Rückgabe; 2024-10-12 14:00:00; None; 30; 4104; Mein Herz so weiß; Javier Marías; 1992.0; Roman; kfe29768; ObH50219
+Leihe; 2024-10-12 15:00:00; False; 46; 2738; Wem die Stunde schlägt; Ernest Hemingway; 1940.0; Roman; Xla24507; jlX87162
+Leihe; 2024-10-12 15:00:00; False; 218; 5185; Einführung in die mathematische Philosophie; Bertrand Russell; 1919.0; Philosophie; CVR76985; gId69582
+Leihe; 2024-10-12 16:00:00; False; 149; 6029; Die Dame mit dem Hündchen; Anton P. Tschechow; 1899.0; Erzählung; bJo19807; Rrm40156
+Leihe; 2024-10-12 19:00:00; False; 92; 6666; Gott schütze dieses Haus; Elizabeth George; 1988.0; Roman; lsn34179; eDi60975
+Rückgabe; 2024-10-13 00:00:00; None; 196; 5907; Jahrmarkt der Eitelkeit; William Makepeace Thackeray; 1848.0; Roman; JtA09637; erP28106
+Leihe; 2024-10-13 03:00:00; False; 244; 1716; Die Judenbuche; Annette von Droste-Hülshoff; 1842.0; Novelle; BrX15069; Fwt32860
+Leihe; 2024-10-13 06:00:00; False; 264; 4343; Der polnische Reiter; Antonio Muñoz Molina; 1991.0; Roman; omH89674; MAq20487
+Leihe; 2024-10-13 06:00:00; False; 212; 4444; Menschenkind; Toni Morrison; 1987.0; Roman; hTm04375; JzO90831
+Leihe; 2024-10-13 06:00:00; False; 140; 1258; Sorge dich nicht – lebe!; Dale Carnegie; 1948.0; Sachbuch; Rrx80263; rLD63594
+Leihe; 2024-10-13 07:00:00; False; 215; 2024; Der Schakal; Frederick Forsyth; 1971.0; Roman; kJO59861; zOq80561
+Leihe; 2024-10-13 07:00:00; False; 82; 6833; Der Tod des Handlungsreisenden; Arthur Miller; 1949.0; Drama; iJV25674; WlR46290
+Leihe; 2024-10-13 10:00:00; False; 182; 2398; Katz und Maus; Günter Grass; 1961.0; Roman; olv17539; nBi83097
+Leihe; 2024-10-13 10:00:00; False; 243; 65; Guzmán de Alfarache; Mateo Alemán; 1599.0; Roman; boI51407; XhW39601
+Leihe; 2024-10-13 11:00:00; False; 253; 5554; Liebesleben; Zeruya Shalev; 1997.0; Roman; pvc51096; lXp26713
+Leihe; 2024-10-13 14:00:00; False; 84; 3384; Das sexuelle Verhalten des Mannes / der Frau; Alfred Charles Kinsey; 1948.0; Sachbuch; Rca91240; qjS80915
+Leihe; 2024-10-13 17:00:00; False; 167; 4946; Der Pate; Mario Puzo; 1969.0; Roman; CdH54832; yFl09845
+Leihe; 2024-10-13 20:00:00; False; 244; 4910; Der Räuber Hotzenplotz; Otfried Preußler; 1962.0; Kinderbuch; SKz04178; yWK41796
+Leihe; 2024-10-13 20:00:00; False; 120; 4234; Schubumkehr; Robert Menasse; 1995.0; Roman; eGp70654; obe10652
+Leihe; 2024-10-13 23:00:00; False; 196; 5967; Krieg und Frieden; Lew N. Tolstoi; 1868.0; Roman; hCc70981; vGZ45923
+Leihe; 2024-10-13 23:00:00; False; 221; 3640; Das unauslöschliche Siegel; Elisabeth Langgässer; 1946.0; Roman; ijx03742; Evw08263
+Leihe; 2024-10-13 23:00:00; False; 53; 660; Das Jazzbuch; Joachim-Ernst Berendt; 1953.0; Sachbuch; xQd47396; BoO90627
+Rückgabe; 2024-10-14 03:00:00; None; 120; 4234; Schubumkehr; Robert Menasse; 1995.0; Roman; eGp70654; obe10652
+Rückgabe; 2024-10-14 07:00:00; None; 167; 4946; Der Pate; Mario Puzo; 1969.0; Roman; CdH54832; yFl09845
+Rückgabe; 2024-10-14 11:00:00; None; 34; 5388; Die Insel Felsenburg; Johann Gottfried Schnabel; 1731.0; Roman; JEp46759; tWz34968
+Leihe; 2024-10-14 11:00:00; False; 113; 5000; Die letzte Welt; Christoph Ransmayr; 1988.0; Roman; kAI95364; lwt89217
+Leihe; 2024-10-14 14:00:00; False; 213; 1139; Childe Harolds Pilgerfahrt; George Byron; 1812.0; Versepos; izB97046; nGm27503
+Rückgabe; 2024-10-14 18:00:00; None; 46; 2738; Wem die Stunde schlägt; Ernest Hemingway; 1940.0; Roman; Xla24507; jlX87162
+Leihe; 2024-10-14 19:00:00; False; 143; 3392; Das Dschungelbuch / Die Dschungelbücher; Rudyard Kipling; 1894.0; Roman; oCy86743; Tlx13768
+Leihe; 2024-10-14 22:00:00; False; 53; 3358; Das Jahrhundert des Kindes; Ellen Key; 1900.0; Sachbuch; FdP67312; zHL65231
+Leihe; 2024-10-14 23:00:00; False; 258; 2021; Zimmer mit Aussicht; Edward Morgan Forster; 1908.0; Roman; OzL36810; Rxo83692
+Rückgabe; 2024-10-15 03:00:00; None; 105; 3163; Dubliner; James Joyce; 1914.0; Erzählung; MLt78260; MBY48035
+Leihe; 2024-10-15 03:00:00; False; 7; 2986; Unter dem Tagmond; Keri Hulme; 1984.0; Roman; jMe42180; byY89142
+Rückgabe; 2024-10-15 07:00:00; None; 218; 2273; Die Wahlverwandtschaften; Johann Wolfgang von Goethe; 1809.0; Roman; XGF26348; swA80519
+Rückgabe; 2024-10-15 12:00:00; None; 113; 5000; Die letzte Welt; Christoph Ransmayr; 1988.0; Roman; kAI95364; lwt89217
+Leihe; 2024-10-15 13:00:00; False; 233; 1354; Traumpfade; Bruce Chatwin; 1987.0; Roman; fzC76094; eEg85261
+Leihe; 2024-10-15 16:00:00; False; 161; 6133; Aeneis; Vergil; -29.0; Epos; dwy79061; eJr16790
+Leihe; 2024-10-15 19:00:00; False; 226; 414; Stolz und Vorurteil; Jane Austen; 1813.0; Roman; MQG83619; epk28903
+Leihe; 2024-10-15 20:00:00; False; 164; 2077; Das Ich und das Es; Sigmund Freud; 1923.0; Sachbuch; ebA04532; Xcx74905
+Rückgabe; 2024-10-16 01:00:00; None; 221; 3640; Das unauslöschliche Siegel; Elisabeth Langgässer; 1946.0; Roman; ijx03742; Evw08263
+Rückgabe; 2024-10-16 06:00:00; None; 75; 2204; (Meier) Helmbrecht; Wernher der Gartenaere; 1237.0; Versepos; DXQ32704; wOJ91805
+Leihe; 2024-10-16 08:00:00; False; 177; 1464; Schande; J. M. Coetzee; 1999.0; Roman; Nvg46137; IMs30845
+Leihe; 2024-10-16 08:00:00; False; 58; 2669; Der scharlachrote Buchstabe; Nathaniel Hawthorne; 1850.0; Roman; VNy80172; jud19482
+Leihe; 2024-10-16 08:00:00; False; 237; 1687; Die Dämonen; Fjodor Dostojewski; 1871.0; Roman; Foj32158; eXx65890
+Leihe; 2024-10-16 09:00:00; False; 10; 6817; Das Frühstücksei. Gesammelte dramatische Geschichten; Loriot; 2003.0; Erzählung; ZuJ12793; TAe16240
+Rückgabe; 2024-10-16 13:00:00; None; 239; 1028; Die gute Erde; Pearl S. Buck; 1931.0; Roman; aTB26074; Heo37405
+Rückgabe; 2024-10-16 17:00:00; None; 226; 414; Stolz und Vorurteil; Jane Austen; 1813.0; Roman; MQG83619; epk28903
+Rückgabe; 2024-10-16 22:00:00; None; 196; 5967; Krieg und Frieden; Lew N. Tolstoi; 1868.0; Roman; hCc70981; vGZ45923
+Leihe; 2024-10-17 00:00:00; False; 34; 5732; Jenseits von Eden; John Steinbeck; 1952.0; Roman; Zur38026; DKy37180
+Leihe; 2024-10-17 03:00:00; False; 168; 3740; Die Theodizee; Gottfried Wilhelm Leibniz; 1710.0; Philosophie; PVi17692; Hms48092
+Leihe; 2024-10-17 05:00:00; False; 154; 5093; Mitte des Lebens; Luise Rinser; 1950.0; Roman; AfD86473; mKM68217
+Leihe; 2024-10-17 08:00:00; False; 12; 5097; Mitte des Lebens; Luise Rinser; 1950.0; Roman; Dxl51486; mqB14762
+Leihe; 2024-10-17 08:00:00; False; 55; 43; Die größere Hoffnung; Ilse Aichinger; 1948.0; Roman; Gjt40651; iAK70564
+Leihe; 2024-10-17 08:00:00; False; 76; 5251; Wir; Jewgeni Samjatin; 1924.0; Roman; kNE40368; rad13096
+Leihe; 2024-10-17 09:00:00; False; 96; 6514; Ungeduld des Herzens; Stefan Zweig; 1939.0; Roman; Yxp60935; mHw41986
+Rückgabe; 2024-10-17 14:00:00; None; 182; 2398; Katz und Maus; Günter Grass; 1961.0; Roman; olv17539; nBi83097
+Leihe; 2024-10-17 16:00:00; False; 55; 5420; Der Tod im Reisfeld; Peter Scholl-Latour; 1979.0; Sachbuch; WLb23068; LyD02675
+Leihe; 2024-10-17 17:00:00; False; 64; 5740; Die Geheimwissenschaft im Umriss; Rudolf Steiner; 1910.0; Sachbuch; kaR40798; Wti46581
+Leihe; 2024-10-17 17:00:00; False; 49; 4665; Farm der Tiere; George Orwell; 1946.0; Roman; LTd96150; eaF35478
+Rückgabe; 2024-10-17 21:00:00; None; 253; 5554; Liebesleben; Zeruya Shalev; 1997.0; Roman; pvc51096; lXp26713
+Leihe; 2024-10-17 21:00:00; False; 58; 5113; Hiob; Joseph Roth; 1930.0; Roman; bNq58729; asq57423
+Rückgabe; 2024-10-18 02:00:00; None; 164; 3162; Dubliner; James Joyce; 1914.0; Erzählung; PVo40398; TmD13708
+Leihe; 2024-10-18 05:00:00; False; 170; 3519; Gespräche; Konfuzius; -551.0; Philosophie; NIE26749; wJg25419
+Leihe; 2024-10-18 05:00:00; False; 147; 5915; Die Insel des zweiten Gesichts; Albert Vigoleis Thelen; 1953.0; Roman; dBV85340; EyZ67590
+Leihe; 2024-10-18 06:00:00; False; 84; 2507; Schnee der auf Zedern fällt; David Guterson; 1994.0; Roman; NBJ02348; fin85297
+Leihe; 2024-10-18 07:00:00; False; 63; 5822; Das rote Zimmer; August Strindberg; 1879.0; Roman; taD13045; khs32018
+Leihe; 2024-10-18 13:00:00; False; 4; 3774; Venezianisches Finale; Donna Leon; 1992.0; Roman; rpM05139; BnF98531
+Leihe; 2024-10-18 16:00:00; False; 243; 4143; Manifest der kommunistischen Partei; Friedrich Engels, Karl Marx; 1848.0; Sachbuch; fjA59738; DwQ06328
+Leihe; 2024-10-18 19:00:00; False; 17; 4252; Jürg Jenatsch; Conrad Ferdinand Meyer; 1876.0; Roman; QOX98457; kcp41236
+Rückgabe; 2024-10-18 23:00:00; None; 244; 4910; Der Räuber Hotzenplotz; Otfried Preußler; 1962.0; Kinderbuch; SKz04178; yWK41796
+Leihe; 2024-10-19 00:00:00; False; 44; 4049; Die Jugend des Königs Henri Quatre; Heinrich Mann; 1935.0; Roman; ujM26753; wiO13284
+Leihe; 2024-10-19 01:00:00; False; 63; 5006; Die sexuelle Revolution; Wilhelm Reich; 1936.0; Sachbuch; Vyr04976; LXe37158
