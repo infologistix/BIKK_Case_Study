@@ -130,6 +130,7 @@ while 1:
         dfd['Transaktion']['ID_Exemplar'] = pd.to_numeric(dfd['Transaktion']['ID_Exemplar']).astype('Int64', errors='ignore')
         dfd['Transaktion']['ID_Kunde'] = pd.to_numeric(dfd['Transaktion']['ID_Kunde']).astype('Int64', errors='ignore')
         # Jahre zu int konvertieren
+        dfd['Transaktion']['Jahr'] = np.where(dfd['Transaktion']['Jahr'].astype(str).str.contains("nan"), np.nan, dfd['Transaktion']['Jahr'] )
         dfd['Transaktion']['Jahr'] = pd.to_numeric(dfd['Transaktion']['Jahr']).astype('Int64', errors='ignore')
         
         # Fernleihe zu true oder false konvertieren
@@ -364,10 +365,21 @@ while 1:
     
     
     
+    #for Tabelle in dfs.keys():
+    #    dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append') 
+    
+    
+    CDW_Tabellen_Liste = insp.get_table_names()
+    
+    Statische_Tabellen = ['Exemplare', 'Autor', 'Buch']
+    
+    for Tabelle in Statische_Tabellen:
+        if Tabelle not in CDW_Tabellen_Liste:
+            dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='replace') 
+    
     for Tabelle in dfs.keys():
-        dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append') 
-    
-    
-    
+        if Tabelle not in Statische_Tabellen:
+            dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append')     
+        
 
 
