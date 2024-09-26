@@ -122,9 +122,22 @@ _<(Optional) Erfüllte Anforderungen>_
 
 _<(optional) Offene Punkte/Probleme/Risiken>_
 
-==== <Name Blackbox 2>
+==== Star-Schemata
 
-_<Blackbox-Template>_
+===== Leihe
+
+image::05_Star_Leihe.drawio.png["Leihe"]
+
+===== Zahlungen
+
+image::05_Stern_Zahlung.drawio.png["Zahlungen"]
+
+===== Zahlungen
+
+image::05_Stern_Verfuegbarkeit.drawio.png["Verfügbarkeit"]
+
+
+
 
 ==== <Name Blackbox n>
 
