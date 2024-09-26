@@ -4,7 +4,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Kontextabgrenzung
 
 
-image::03_Business-Context.drawio.png["Businesskontext hell"]
+image::03_Business-Context.drawio.png["Businesskontext"]
 
 ifdef::arc42help[]
 [role="arc42help"]
