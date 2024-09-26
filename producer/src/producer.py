@@ -85,6 +85,7 @@ topics = np.random.choice(topic_choices, NUM_SIMUL, p=[0.05, 0.85, 0.1])
 
 action = transaktion_factory(START_NUM_CUST, bs.shape[0])
 counter = 0.
+costumer_count = 0
 
 buch_date_dict = {}
 date = START_DATE
@@ -104,7 +105,7 @@ try:
             #produce_ratio(topic, str(date))
             if counter < 6:
                 buch, cust = action.leihe_buch()
-                produce_message(topic, "Leihe; " + str(date) + "; " + Fernleihe, buch, bs, cust)
+                produce_message(topic, "Leihe" + SEP + str(date) + SEP + Fernleihe, buch, bs, cust)
                 # produce_message(topic, "Leihe", buch, bs, cust, Ausleihdatum, Rückgabedatum)
             elif counter%100 == 0:
                 p.flush()
@@ -115,14 +116,15 @@ try:
                 # produce_ratio(topic, ratio)
                 if würfel < ratio:
                     buch, cust = action.leihe_buch()
-                    produce_message(topic, "Leihe; " + str(date) + "; " + Fernleihe, buch, bs, cust)
+                    produce_message(topic, "Leihe" + SEP + str(date) + SEP + Fernleihe, buch, bs, cust)
                 else:
                     buch, cust = action.rückgabe_buch()
-                    produce_message(topic, "Rückgabe; " + str(date) + "; None", buch, bs, cust,)
+                    produce_message(topic, "Rückgabe" + SEP + str(date) + SEP + "None", buch, bs, cust,)
 
         elif topic=="Neukunden":
             action.add_customer()
-            produce_message(topic, "Neukunde; " + str(counter), action.c_count, df)
+            produce_message(topic, "Neukunde" + SEP + str(costumer_count), action.c_count, df)
+            costumer_count += 1
         else:
             c_bew = randint(1, bew.shape[0] - 1)
             msg = produce_message(topic, "Bewertung", c_bew, bew)
