@@ -312,7 +312,14 @@ while 1:
                                                         .rename(columns={'Nr':'ID_Buch'})
     
     dfs['Leihe'] = dfd['Transaktion'].reindex(columns=list(Leihe_cols.values())).reset_index().rename(columns={'index':'ID_Leihe'})
-    
+
+    # Fülle die Werte von "Ausleihdatum" in DWH Tabelle "Leihe" mit den Werten von "Datum" aus Quelltabelle "Transaktion" wenn in der Spalte "Aktion" der Wert "Ausleihe" steht
+    dfs['Leihe']['Ausleihdatum']=pd.to_datetime(dfs['Leihe']['Ausleihdatum'])
+    dfs['Leihe'].loc[dfd['Transaktion']['Aktion'] == "Leihe", "Ausleihdatum"] = dfd['Transaktion']['Datum']
+    # Analog "Rueckgabedatum" und "Rückgabe"
+    dfs['Leihe']['Rueckgabedatum']=pd.to_datetime(dfs['Leihe']['Rueckgabedatum'])
+    dfs['Leihe'].loc[dfd['Transaktion']['Aktion'] == "Rückgabe", "Rueckgabedatum"] = dfd['Transaktion']['Datum']
+
     
     ### more ###
     dfs['Mitgliedsstatus'] = pd.DataFrame(columns=list(Mitgliedsstatus_cols.values()))
