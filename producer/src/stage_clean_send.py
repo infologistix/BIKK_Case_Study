@@ -8,9 +8,77 @@ from random import randint
 from simulation import transaktion_factory
 from time import sleep
 import socket
-
-
+from mysql.connector import connect
 from confluent_kafka import Consumer
+
+
+
+CORE_DATABASE = 'core_test'
+
+def connect_to_database():
+    USER = 'root'
+    PASSWORD = 'root'
+    HOST = 'mysql57'          # see yml file
+    PORT = 3306
+
+
+    connection = connect(user=USER, password=PASSWORD, host=HOST, port=PORT)
+    return connection
+
+def create_loan_table(connection, database):
+    cursor = connection.cursor()
+    query = ("SHOW DATABASES")
+    cursor.execute(query)
+    result = cursor.fetchall()
+    if (database,) not in result:
+        create_query = f"CREATE DATABASE {database}" 
+        cursor.execute(create_query)
+    select_db_query = f"USE {database}"
+    cursor.execute(select_db_query)
+    create_leihe_table = '''CREATE TABLE IF NOT EXISTS leihe (
+        LeihID INT AUTO_INCREMENT PRIMARY KEY ,
+        KundenID INT NOT NULL,
+        ExemplarID INT NOT NULL,
+        Ausleihdatum DATETIME NOT NULL,
+        Rueckgabedatum DATETIME,
+        Verlaengerungsstatus INT,
+        Mahnstatus INT,
+        Fernleihe BOOLEAN
+    )'''
+    cursor.execute(create_leihe_table)
+
+def update_loan_table(connection, transaktionen):
+   cursor = connection.cursor()
+   for index, row in transaktionen.iterrows():
+    if row['Aktion'] == 'Leihe':
+        
+        print("Neue Leihe eintragen")
+        #print(row)
+
+        loan_query = f'''INSERT INTO leihe(KundenID, ExemplarID, Ausleihdatum, Fernleihe) VALUES ({row['ID_Kunde']}, {row['ID_Exemplar']}, "{row['Datum']}", {row['Fernleihe']})'''
+        cursor.execute(loan_query)
+
+
+    if row['Aktion'] == 'Rückgabe':
+        print("Rückgabe")
+        # suche nach Zeile mit ID_Kunde, ID_Exemplar, Rückgabedatum leer    
+        find_loan = f"SELECT LeihID FROM leihe WHERE KundenID = {row['ID_Kunde']} AND ExemplarID = {row['ID_Exemplar']} AND Rueckgabedatum IS NULL"
+        cursor.execute(find_loan)
+        results = cursor.fetchall()
+        # we get a list of tuple. every record is a list entry. 
+        # pruefe ob zeile eindeutig
+        if len(results) == 0:
+            print(f"Warning! Could not find open loan! {find_loan}")
+        if len(results) > 1:
+            print(f"Warning! Found {len(results)} open loans! {find_loan}")
+        if len(results) == 1:
+            leih_id = results[0][0]
+            # setze Rückgabedatum auf Datum
+            enter_rueckgabedatum = f'''UPDATE leihe SET Rueckgabedatum = "{row['Datum']}" WHERE LeihID = {leih_id}'''
+            cursor.execute(enter_rueckgabedatum)
+
+
+
 
 
 # # Einlesen des Buchbestands
@@ -88,8 +156,19 @@ topics=["Transaktion", "Bewertung", "Neukunden"]
 
 
 
+# Stelle connection zur MySQL-Datenbank her
+connection = connect_to_database()
+
+# Lege CoreDWH-Tabellen an
+
+# lege leihe tabelle in core-dwh-DB an
+create_loan_table(connection, database=CORE_DATABASE)
+print("Created connection and loan table!")
+# TODO weitere Tabellen neben Leihe anlegen
 
 
+
+''' Schleife die immer neue Daten konsumiert. Daten werden gestaged (als pd dataframes), gecleant und die CoreDWH-Tabellen mit den neuen Daten geupdatet'''
 while 1:
     
     dfd={}
@@ -367,7 +446,11 @@ while 1:
     for Tabelle in dfs.keys():
         dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append') 
     
-    
+    # update die loantabelle mit allen transaktionen, die in diesem Loop aufgenommen wurden
+    print("Update loan table is running")
+    update_loan_table(connection, dfd['Transaktionen'])
+    print("Update loan table is finished")
+    # TODO updates für weitere Tabellen implementieren
     
 
 
