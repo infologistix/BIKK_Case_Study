@@ -94,6 +94,9 @@ try:
         
         if topic=="Transaktion":
             würfel = np.random.rand()
+            Fernleihe = "True"
+            if würfel < 0.7:
+                Fernleihe = "False"
             counter += 1.
             delta = würfel * 6
             date += timedelta(hours=int(delta))
@@ -101,7 +104,7 @@ try:
             #produce_ratio(topic, str(date))
             if counter < 6:
                 buch, cust = action.leihe_buch()
-                produce_message(topic, "Leihe; " + str(date), buch, bs, cust)
+                produce_message(topic, "Leihe; " + str(date) + "; " + Fernleihe, buch, bs, cust)
                 # produce_message(topic, "Leihe", buch, bs, cust, Ausleihdatum, Rückgabedatum)
             elif counter%100 == 0:
                 p.flush()
@@ -112,14 +115,14 @@ try:
                 # produce_ratio(topic, ratio)
                 if würfel < ratio:
                     buch, cust = action.leihe_buch()
-                    produce_message(topic, "Leihe; " + str(date), buch, bs, cust)
+                    produce_message(topic, "Leihe; " + str(date) + "; " + Fernleihe, buch, bs, cust)
                 else:
                     buch, cust = action.rückgabe_buch()
-                    produce_message(topic, "Rückgabe; " + str(date), buch, bs, cust,)
+                    produce_message(topic, "Rückgabe; " + str(date) + "; None", buch, bs, cust,)
 
         elif topic=="Neukunden":
             action.add_customer()
-            produce_message(topic, "Neukunde", action.c_count, df)
+            produce_message(topic, "Neukunde; " + str(counter), action.c_count, df)
         else:
             c_bew = randint(1, bew.shape[0] - 1)
             msg = produce_message(topic, "Bewertung", c_bew, bew)

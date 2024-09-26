@@ -43,14 +43,15 @@ c = Consumer({
 prod_Transaktion_cols={
     0:'Aktion',
     1:'Datum',
-    2:'ID_Exemplar',
-    3:'ID_Kunde',
-    4:'Titel',
-    5:'Autor',
-    6:'Jahr',
-    7:'Art',
-    8:'Kennung',
-    9:'Zugriffsort'
+    2:'Fernleihe',
+    3:'ID_Exemplar',
+    4:'ID_Kunde',
+    5:'Titel',
+    6:'Autor',
+    7:'Jahr',
+    8:'Art',
+    9:'Kennung',
+   10:'Zugriffsort'
 }
 
 prod_Bewertung_cols={
@@ -64,22 +65,23 @@ prod_Bewertung_cols={
 prod_Neukunden_cols={
     0:'Aktion',
     1:'ID_Kunde',
-    2:'Kundennr',
-    3:'Vorname_1',
-    4:'Vorname_2',
-    5:'Nachname',
-    6:'Anrede',
-    7:'PLZ',
-    8:'Strasse',
-    9:'Hausnr',
-   10:'Mail',
-   11:'Tel',
-   12:'Geschlecht',
-   13:'Geburtsdatum',
-   14:'Beruf',
-   15:'Titel',
-   16:'PersoNr',
-   17:'PersoValidTo' 
+    2:'c_count',
+    3:'Kundennr',
+    4:'Vorname_1',
+    5:'Vorname_2',
+    6:'Nachname',
+    7:'Anrede',
+    8:'PLZ',
+    9:'Strasse',
+   10:'Hausnr',
+   11:'Mail',
+   12:'Tel',
+   13:'Geschlecht',
+   14:'Geburtsdatum',
+   15:'Beruf',
+   16:'Titel',
+   17:'PersoNr',
+   18:'PersoValidTo' 
 }
 
 cols=[prod_Transaktion_cols,prod_Bewertung_cols,prod_Neukunden_cols]
