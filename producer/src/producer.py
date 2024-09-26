@@ -124,6 +124,7 @@ try:
             action.add_customer()
             produce_message(topic, "Neukunde; " + str(coustomer_count), action.c_count, df)
             coustomer_count += 1
+
         else:
             c_bew = randint(1, bew.shape[0] - 1)
             msg = produce_message(topic, "Bewertung", c_bew, bew)
