@@ -85,7 +85,7 @@ topics = np.random.choice(topic_choices, NUM_SIMUL, p=[0.05, 0.85, 0.1])
 
 action = transaktion_factory(START_NUM_CUST, bs.shape[0])
 counter = 0.
-
+coustomer_count = 0
 buch_date_dict = {}
 date = START_DATE
 
@@ -122,7 +122,8 @@ try:
 
         elif topic=="Neukunden":
             action.add_customer()
-            produce_message(topic, "Neukunde; " + str(counter), action.c_count, df)
+            produce_message(topic, "Neukunde; " + str(coustomer_count), action.c_count, df)
+            coustomer_count += 1
         else:
             c_bew = randint(1, bew.shape[0] - 1)
             msg = produce_message(topic, "Bewertung", c_bew, bew)
