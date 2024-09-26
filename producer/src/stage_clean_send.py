@@ -47,8 +47,11 @@ def create_loan_table(connection, database):
     )'''
     cursor.execute(create_leihe_table)
 
-def update_loan_table(connection, transaktionen):
+def update_loan_table(connection, database, transaktionen):
    cursor = connection.cursor()
+   select_db_query = f"USE {database}"
+   cursor.execute(select_db_query)
+
    for index, row in transaktionen.iterrows():
     if row['Aktion'] == 'Leihe':
         
@@ -57,7 +60,7 @@ def update_loan_table(connection, transaktionen):
 
         loan_query = f'''INSERT INTO leihe(KundenID, ExemplarID, Ausleihdatum, Fernleihe) VALUES ({row['ID_Kunde']}, {row['ID_Exemplar']}, "{row['Datum']}", {row['Fernleihe']})'''
         cursor.execute(loan_query)
-
+        connection.commit()
 
     if row['Aktion'] == 'Rückgabe':
         print("Rückgabe")
@@ -76,7 +79,7 @@ def update_loan_table(connection, transaktionen):
             # setze Rückgabedatum auf Datum
             enter_rueckgabedatum = f'''UPDATE leihe SET Rueckgabedatum = "{row['Datum']}" WHERE LeihID = {leih_id}'''
             cursor.execute(enter_rueckgabedatum)
-
+            connection.commit()
 
 
 
@@ -155,9 +158,10 @@ cols=[prod_Transaktion_cols,prod_Bewertung_cols,prod_Neukunden_cols]
 topics=["Transaktion", "Bewertung", "Neukunden"]
 
 
-
+print("Trying to establish connection")
 # Stelle connection zur MySQL-Datenbank her
 connection = connect_to_database()
+print("Establishing connection successful")
 
 # Lege CoreDWH-Tabellen an
 
@@ -227,7 +231,7 @@ while 1:
         
         
     # ### Neukunden
-    if not dfd['Neukunden'].empty:
+    if False and not dfd['Neukunden'].empty:
         
         # IDs zu int konvertieren
         dfd['Neukunden']['ID_Kunde'] = pd.to_numeric(dfd['Neukunden']['ID_Kunde']).astype('Int64', errors='ignore')
@@ -407,13 +411,19 @@ while 1:
     
     
     
+
+    # update die loantabelle mit allen transaktionen, die in diesem Loop aufgenommen wurden
+    print("Update loan table is running")
+    update_loan_table(connection, database=CORE_DATABASE, transaktionen=dfd['Transaktion'])
+    print("Update loan table is finished")
+    # TODO updates für weitere Tabellen implementieren
     
     
     
     # # Schicke die Tabellen an den SQL Server
     # 
     
-    
+    '''
     from sqlalchemy import create_engine, inspect, text
     
     USER = 'root'
@@ -445,12 +455,8 @@ while 1:
     
     for Tabelle in dfs.keys():
         dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append') 
-    
-    # update die loantabelle mit allen transaktionen, die in diesem Loop aufgenommen wurden
-    print("Update loan table is running")
-    update_loan_table(connection, dfd['Transaktionen'])
-    print("Update loan table is finished")
-    # TODO updates für weitere Tabellen implementieren
+    '''
+
     
 
 
