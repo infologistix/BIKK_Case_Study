@@ -8,9 +8,80 @@ from random import randint
 from simulation import transaktion_factory
 from time import sleep
 import socket
-
-
+from mysql.connector import connect
 from confluent_kafka import Consumer
+
+
+NAME_LEIHTABELLE = "Leihe1"
+CORE_DATABASE = 'core_test'
+
+def connect_to_database():
+    USER = 'root'
+    PASSWORD = 'root'
+    HOST = 'mysql57'          # see yml file
+    PORT = 3306
+
+
+    connection = connect(user=USER, password=PASSWORD, host=HOST, port=PORT)
+    return connection
+
+def create_loan_table(connection, database):
+    cursor = connection.cursor()
+    query = ("SHOW DATABASES")
+    cursor.execute(query)
+    result = cursor.fetchall()
+    if (database,) not in result:
+        create_query = f"CREATE DATABASE {database}" 
+        cursor.execute(create_query)
+    select_db_query = f"USE {database}"
+    cursor.execute(select_db_query)
+    create_leihe_table = f'''CREATE TABLE IF NOT EXISTS {NAME_LEIHTABELLE} (
+        LeihID INT AUTO_INCREMENT PRIMARY KEY ,
+        KundenID INT NOT NULL,
+        ExemplarID INT NOT NULL,
+        Ausleihdatum DATETIME NOT NULL,
+        Rueckgabedatum DATETIME,
+        Verlaengerungsstatus INT,
+        Mahnstatus INT,
+        Fernleihe BOOLEAN
+    )'''
+    cursor.execute(create_leihe_table)
+
+def update_loan_table(connection, database, transaktionen):
+   cursor = connection.cursor()
+   select_db_query = f"USE {database}"
+   cursor.execute(select_db_query)
+
+   for index, row in transaktionen.iterrows():
+    if row['Aktion'] == 'Leihe':
+        
+        print("Neue Leihe eintragen")
+        #print(row)
+
+        loan_query = f'''INSERT INTO {NAME_LEIHTABELLE}(KundenID, ExemplarID, Ausleihdatum, Fernleihe) VALUES ({row['ID_Kunde']}, {row['ID_Exemplar']}, "{row['Datum']}", {row['Fernleihe']})'''
+        cursor.execute(loan_query)
+        connection.commit()
+
+    if row['Aktion'] == 'Rückgabe':
+        print("Rückgabe")
+        # suche nach Zeile mit ID_Kunde, ID_Exemplar, Rückgabedatum leer    
+        find_loan = f"SELECT LeihID FROM {NAME_LEIHTABELLE} WHERE KundenID = {row['ID_Kunde']} AND ExemplarID = {row['ID_Exemplar']} AND Rueckgabedatum IS NULL"
+        cursor.execute(find_loan)
+        results = cursor.fetchall()
+        # we get a list of tuple. every record is a list entry. 
+        # pruefe ob zeile eindeutig
+        if len(results) == 0:
+            print(f"Warning! Could not find open loan! {find_loan}")
+        if len(results) > 1:
+            print(f"Warning! Found {len(results)} open loans! {find_loan}")
+        if len(results) == 1:
+            leih_id = results[0][0]
+            # setze Rückgabedatum auf Datum
+            enter_rueckgabedatum = f'''UPDATE {NAME_LEIHTABELLE} SET Rueckgabedatum = "{row['Datum']}" WHERE LeihID = {leih_id}'''
+            cursor.execute(enter_rueckgabedatum)
+            connection.commit()
+
+
 
 
 # # Einlesen des Buchbestands
@@ -87,9 +158,21 @@ cols=[prod_Transaktion_cols,prod_Bewertung_cols,prod_Neukunden_cols]
 topics=["Transaktion", "Bewertung", "Neukunden"]
 
 
+print("Trying to establish connection")
+# Stelle connection zur MySQL-Datenbank her
+connection = connect_to_database()
+print("Establishing connection successful")
+
+# Lege CoreDWH-Tabellen an
+
+# lege leihe tabelle in core-dwh-DB an
+create_loan_table(connection, database=CORE_DATABASE)
+print("Created connection and loan table!")
+# TODO weitere Tabellen neben Leihe anlegen
 
 bestandskunden_flag = 1
 
+''' Schleife die immer neue Daten konsumiert. Daten werden gestaged (als pd dataframes), gecleant und die CoreDWH-Tabellen mit den neuen Daten geupdatet'''
 while 1:
     
     dfd={}
@@ -155,7 +238,7 @@ while 1:
         dfd['Neukunden']['ID_Kunde'] = pd.to_numeric(dfd['Neukunden']['ID_Kunde']).astype('Int64', errors='ignore')
         dfd['Neukunden']['Kundennr'] = pd.to_numeric(dfd['Neukunden']['Kundennr']).astype('Int64', errors='ignore')
         
-        # Anreden konsistent machen 
+        # Anreden konsistent machen
         if dfd['Neukunden']['Anrede'].str.contains('Fr\.', regex=True).any()==True:
             dfd['Neukunden']['Anrede'] = dfd['Neukunden']['Anrede'].replace(['Fr\.'],'Frau', regex=True)
         if dfd['Neukunden']['Anrede'].str.contains('Hr\.', regex=True).any()==True:
@@ -329,6 +412,12 @@ while 1:
     
     
     
+
+    # update die loantabelle mit allen transaktionen, die in diesem Loop aufgenommen wurden
+    print("Update loan table is running")
+    update_loan_table(connection, database=CORE_DATABASE, transaktionen=dfd['Transaktion'])
+    print("Update loan table is finished")
+    # TODO updates für weitere Tabellen implementieren
     
     
     
@@ -342,7 +431,7 @@ while 1:
     PASSWORD = 'root'
     HOST = 'mysql57' # 'localhost'          # see yml file
     PORT = 3306 # 3307
-    DATABASE = 'test_db_1'
+    DATABASE = 'core_test'
      
     
     def get_connection(database=DATABASE):
@@ -351,7 +440,7 @@ while 1:
                 .format(USER, PASSWORD, HOST, PORT, database)
         )
     
-    engine = get_connection('mysql')
+    engine = get_connection(DATABASE)
     with engine.connect() as connection:
         insp = inspect(engine)
         db_list = insp.get_schema_names()
@@ -438,5 +527,4 @@ while 1:
         if Tabelle not in Statische_Tabellen:
             dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append')     
         
-
 
