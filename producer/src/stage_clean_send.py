@@ -231,13 +231,13 @@ while 1:
         
         
     # ### Neukunden
-    if False and not dfd['Neukunden'].empty:
+    if not dfd['Neukunden'].empty:
         
         # IDs zu int konvertieren
         dfd['Neukunden']['ID_Kunde'] = pd.to_numeric(dfd['Neukunden']['ID_Kunde']).astype('Int64', errors='ignore')
         dfd['Neukunden']['Kundennr'] = pd.to_numeric(dfd['Neukunden']['Kundennr']).astype('Int64', errors='ignore')
         
-        # Anreden konsistent machen 
+        # Anreden konsistent machen
         if dfd['Neukunden']['Anrede'].str.contains('Fr\.', regex=True).any()==True:
             dfd['Neukunden']['Anrede'] = dfd['Neukunden']['Anrede'].replace(['Fr\.'],'Frau', regex=True)
         if dfd['Neukunden']['Anrede'].str.contains('Hr\.', regex=True).any()==True:
@@ -423,14 +423,14 @@ while 1:
     # # Schicke die Tabellen an den SQL Server
     # 
     
-    '''
+    
     from sqlalchemy import create_engine, inspect, text
     
     USER = 'root'
     PASSWORD = 'root'
     HOST = 'mysql57' # 'localhost'          # see yml file
     PORT = 3306 # 3307
-    DATABASE = 'test_db_1'
+    DATABASE = 'core_test'
      
     
     def get_connection(database=DATABASE):
@@ -439,7 +439,7 @@ while 1:
                 .format(USER, PASSWORD, HOST, PORT, database)
         )
     
-    engine = get_connection('mysql')
+    engine = get_connection(DATABASE)
     with engine.connect() as connection:
         insp = inspect(engine)
         db_list = insp.get_schema_names()
@@ -454,8 +454,10 @@ while 1:
     
     
     for Tabelle in dfs.keys():
+        print(f"Trying to create {DATABASE}.{Tabelle}")
         dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append') 
-    '''
+        print(f"Created or added to {DATABASE}.{Tabelle}")
+    
 
     
 
