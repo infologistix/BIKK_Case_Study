@@ -12,7 +12,7 @@ from mysql.connector import connect
 from confluent_kafka import Consumer
 
 
-
+NAME_LEIHTABELLE = "Leihe1"
 CORE_DATABASE = 'core_test'
 
 def connect_to_database():
@@ -35,7 +35,7 @@ def create_loan_table(connection, database):
         cursor.execute(create_query)
     select_db_query = f"USE {database}"
     cursor.execute(select_db_query)
-    create_leihe_table = '''CREATE TABLE IF NOT EXISTS leihe (
+    create_leihe_table = f'''CREATE TABLE IF NOT EXISTS {NAME_LEIHTABELLE} (
         LeihID INT AUTO_INCREMENT PRIMARY KEY ,
         KundenID INT NOT NULL,
         ExemplarID INT NOT NULL,
@@ -58,14 +58,14 @@ def update_loan_table(connection, database, transaktionen):
         print("Neue Leihe eintragen")
         #print(row)
 
-        loan_query = f'''INSERT INTO leihe(KundenID, ExemplarID, Ausleihdatum, Fernleihe) VALUES ({row['ID_Kunde']}, {row['ID_Exemplar']}, "{row['Datum']}", {row['Fernleihe']})'''
+        loan_query = f'''INSERT INTO {NAME_LEIHTABELLE}(KundenID, ExemplarID, Ausleihdatum, Fernleihe) VALUES ({row['ID_Kunde']}, {row['ID_Exemplar']}, "{row['Datum']}", {row['Fernleihe']})'''
         cursor.execute(loan_query)
         connection.commit()
 
     if row['Aktion'] == 'Rückgabe':
         print("Rückgabe")
         # suche nach Zeile mit ID_Kunde, ID_Exemplar, Rückgabedatum leer    
-        find_loan = f"SELECT LeihID FROM leihe WHERE KundenID = {row['ID_Kunde']} AND ExemplarID = {row['ID_Exemplar']} AND Rueckgabedatum IS NULL"
+        find_loan = f"SELECT LeihID FROM {NAME_LEIHTABELLE} WHERE KundenID = {row['ID_Kunde']} AND ExemplarID = {row['ID_Exemplar']} AND Rueckgabedatum IS NULL"
         cursor.execute(find_loan)
         results = cursor.fetchall()
         # we get a list of tuple. every record is a list entry. 
@@ -77,7 +77,7 @@ def update_loan_table(connection, database, transaktionen):
         if len(results) == 1:
             leih_id = results[0][0]
             # setze Rückgabedatum auf Datum
-            enter_rueckgabedatum = f'''UPDATE leihe SET Rueckgabedatum = "{row['Datum']}" WHERE LeihID = {leih_id}'''
+            enter_rueckgabedatum = f'''UPDATE {NAME_LEIHTABELLE} SET Rueckgabedatum = "{row['Datum']}" WHERE LeihID = {leih_id}'''
             cursor.execute(enter_rueckgabedatum)
             connection.commit()
 
