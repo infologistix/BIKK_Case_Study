@@ -85,7 +85,7 @@ topics = np.random.choice(topic_choices, NUM_SIMUL, p=[0.05, 0.85, 0.1])
 
 action = transaktion_factory(START_NUM_CUST, bs.shape[0])
 counter = 0.
-costumer_count = 0
+costumer_count = 1
 
 buch_date_dict = {}
 date = START_DATE
@@ -99,10 +99,9 @@ try:
             if würfel < 0.7:
                 Fernleihe = "False"
             counter += 1.
-            delta = würfel * 6
+            delta = würfel * 23
             date += timedelta(hours=int(delta))
             #produce_ratio(topic, str(delta))
-            #produce_ratio(topic, str(date))
             if counter < 6:
                 buch, cust = action.leihe_buch()
                 produce_message(topic, "Leihe" + SEP + str(date) + SEP + Fernleihe, buch, bs, cust)
@@ -123,7 +122,7 @@ try:
 
         elif topic=="Neukunden":
             action.add_customer()
-            produce_message(topic, "Neukunde" + SEP + str(costumer_count), action.c_count, df)
+            produce_message(topic, "Neukunde" + SEP + str(costumer_count + 500), action.c_count, df)
             costumer_count += 1
         else:
             c_bew = randint(1, bew.shape[0] - 1)

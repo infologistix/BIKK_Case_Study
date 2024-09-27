@@ -88,7 +88,7 @@ topics=["Transaktion", "Bewertung", "Neukunden"]
 
 
 
-
+bestandskunden_flag = 1
 
 while 1:
     
@@ -130,6 +130,7 @@ while 1:
         dfd['Transaktion']['ID_Exemplar'] = pd.to_numeric(dfd['Transaktion']['ID_Exemplar']).astype('Int64', errors='ignore')
         dfd['Transaktion']['ID_Kunde'] = pd.to_numeric(dfd['Transaktion']['ID_Kunde']).astype('Int64', errors='ignore')
         # Jahre zu int konvertieren
+        dfd['Transaktion']['Jahr'] = np.where(dfd['Transaktion']['Jahr'].astype(str).str.contains("nan"), np.nan, dfd['Transaktion']['Jahr'] )
         dfd['Transaktion']['Jahr'] = pd.to_numeric(dfd['Transaktion']['Jahr']).astype('Int64', errors='ignore')
         
         # Fernleihe zu true oder false konvertieren
@@ -362,12 +363,80 @@ while 1:
                 print(f"Database {DATABASE} created!")
     
     
+
+
+
+
+
+
+
+    if bestandskunden_flag == 1:
     
+        df_bestandskunden = pd.read_csv('data/Kunde.csv', sep=',', encoding='unicode_escape')
+        
+        df_bestandskunden['Aktion'] = pd.Series(['Bestandskunde' for x in range(len(df_bestandskunden.index))])
+        
+        
+        # IDs zu int konvertieren
+        df_bestandskunden['ID_Kunde'] = pd.to_numeric(df_bestandskunden['ID_Kunde']).astype(int)
+        df_bestandskunden['Kundennr'] = pd.to_numeric(df_bestandskunden['Kundennr']).astype(int)
+        
+        # Anreden konsistent machen 
+        
+        df_bestandskunden['Anrede'] = df_bestandskunden['Anrede'].replace(['Fr\.'],'Frau', regex=True)
+        df_bestandskunden['Anrede'] = df_bestandskunden['Anrede'].replace(['Hr\.'],'Herr', regex=True)
+        
+        df_bestandskunden['Hausnr']  = np.where(df_bestandskunden['Hausnr'].astype(str).str.contains("NaN"), np.nan, df_bestandskunden['Hausnr'] )
+        # 4-stellige PLZ mit "0" präfixen 
+        df_bestandskunden['PLZ']    = df_bestandskunden['PLZ'].astype(str).str.strip().str.rjust(5, '0')
+        
+        # Hausnummern aus Strasse-Spalte extrahieren
+        def extract_hausnr(strasse):
+          if pd.isna(strasse):
+            return np.nan
+          parts = strasse.split()
+          if len(parts) > 1 and parts[-1].isdigit():
+            return parts[-1]
+          else:
+            return np.nan
+        #Apply extract_hausnr, wenn 'Hausnr' NaN und entferne die Hausnummern aus der Strasse Spalte
+        df_bestandskunden.loc[df_bestandskunden['Hausnr'].isnull(), 'Hausnr'] = df_bestandskunden.loc[df_bestandskunden['Hausnr'].isnull(), 'Strasse'].apply(extract_hausnr)
+        df_bestandskunden['Strasse'] = df_bestandskunden['Strasse'].str.rsplit(expand=True)[0]
+        # Convert Hausnr to int
+        df_bestandskunden['Hausnr'] = pd.to_numeric(df_bestandskunden['Hausnr']).astype('Int64')
+        
+        # Geschlecht konsistent machen 
+        df_bestandskunden['Geschlecht'] = df_bestandskunden['Geschlecht'].str.strip().replace(["^w$", "^W$"],'Weiblich', regex=True)
+        df_bestandskunden['Geschlecht'] = df_bestandskunden['Geschlecht'].str.strip().replace(["^m$", "^M$"],'Männlich', regex=True)
+        
+        # Datumsspalten konsistent machen
+        df_bestandskunden['Geburtsdatum'] = pd.to_datetime(df_bestandskunden['Geburtsdatum'],format='mixed', dayfirst=True)
+        df_bestandskunden['PersoValidTo'] = pd.to_datetime(df_bestandskunden['PersoValidTo'],format='mixed', dayfirst=True)
+        
+        
+        df_bestandskunden = df_bestandskunden.reindex(columns=list(Kunde_cols.values()))
+        df_bestandskunden.to_sql('Kunde', con=engine,schema=DATABASE, index=False, if_exists='append')
+        
+        bestandskunden_flag=0
+
+
+    
+    
+    #for Tabelle in dfs.keys():
+    #    dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append') 
+    
+    
+    CDW_Tabellen_Liste = insp.get_table_names()
+    
+    Statische_Tabellen = ['Exemplare', 'Autor', 'Buch']
+    
+    for Tabelle in Statische_Tabellen:
+        if Tabelle not in CDW_Tabellen_Liste:
+            dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='replace') 
     
     for Tabelle in dfs.keys():
-        dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append') 
-    
-    
-    
+        if Tabelle not in Statische_Tabellen:
+            dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append')     
+        
 
 
