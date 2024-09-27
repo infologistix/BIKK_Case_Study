@@ -142,7 +142,11 @@ join test_db_1.Leihe L2
 on L1.ID_Kunde = L2.ID_Kunde AND L1.ID_Exemplar = L2.ID_Exemplar
 );
 
+GO 
+
 DROP TEMPORARY TABLE IF EXISTS M_Leihe.T_Leihen_2;
+
+GO
 
 CREATE TEMPORARY TABLE M_Leihe.T_Leihen_2
 (
@@ -159,10 +163,26 @@ GROUP BY
     ID_Exemplar
 );
 
+GO
 
 
+DROP TABLE IF EXISTS M_Leihe.F_Leihe;
+
+GO
 
 
+CREATE TABLE M_Leihe.F_Leihe
+(
+ID_Exemplar integer not null, 
+ID_Kundenalter integer  not null, 
+ID_Kundenort integer  not null, 
+ID_Datum integer  not null, 
+Kundenalter    integer
+);
+
+GO
+
+INSERT INTO M_Leihe.F_Leihe 
 SELECT L2.ID_Exemplar, KA.ID_Kundenalter, KO.ID_Kundenort, D.ID_Datum, L2.Leihdauer  FROM M_Leihe.T_Leihen_2 L2
 JOIN M_Leihe.D_Datum AS D
 ON L2.Ausleihdatum = D.Datum
@@ -173,7 +193,7 @@ ON TIMESTAMPDIFF(YEAR, K.Geburtsdatum, NOW()) = KA.Kundenalter
 JOIN M_Leihe.D_Kundenort AS KO
 ON K.PLZ = KO.PLZ
 
-
+#-- select * from M_Leihe.F_Leihe 
 ######
 
 

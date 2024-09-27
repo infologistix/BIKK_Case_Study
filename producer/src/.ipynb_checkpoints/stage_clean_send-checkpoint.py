@@ -8,7 +8,7 @@ from random import randint
 from simulation import transaktion_factory
 from time import sleep
 import socket
-
+from mysql.connector import connect
 
 from confluent_kafka import Consumer
 
@@ -438,5 +438,208 @@ while 1:
         if Tabelle not in Statische_Tabellen:
             dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append')     
         
+
+
+
+
+    # create Marts
+
+    query_M_Leihe="""
+    drop database if exists M_Leihe;
+    create schema M_Leihe;
+    
+    #--=============== Erstelle Dimensionstabellen ================--
+    
+    #--==== Tabelle D_Buch ====--
+    
+    DROP TABLE IF EXISTS M_Leihe.D_Buch;
+    
+     
+     
+    
+    
+    CREATE TABLE M_Leihe.D_Buch
+    (
+    ID_Exemplar integer Primary Key not null,
+    Buch_ID integer, 
+    Genre varchar(50)
+    );
+    
+    INSERT INTO M_Leihe.D_Buch
+    SELECT 
+     DISTINCT(ID_Exemplar), E.ID_Buch, B.Art  
+    FROM 
+     test_db_1.Exemplare AS E
+    JOIN 
+     test_db_1.Buch AS B
+    ON 
+     E.ID_Buch = B.ID_Buch;
+    
+    
+    
+    
+    
+    
+    
+    #--SELECT * from M_Leihe.D_Buch;
+    
+    #--==== Tabelle D_Kundenalter ====--
+    
+    
+    DROP TABLE IF EXISTS M_Leihe.D_Kundenalter;
+    
+    
+    
+    CREATE TABLE M_Leihe.D_Kundenalter
+    (
+    ID_Kundenalter integer AUTO_INCREMENT Primary Key not null, 
+    Kundenalter    integer not null
+    );
+    
+    
+    INSERT INTO M_Leihe.D_Kundenalter (Kundenalter)
+    SELECT 
+     DISTINCT(TIMESTAMPDIFF(YEAR, Geburtsdatum, NOW()))
+    FROM test_db_1.Kunde;
+    
+    
+    
+    #--SELECT * from M_Leihe.D_Kundenalter;
+    
+    
+    #--==== Tabelle D_Kundenort ====--
+    
+    
+    
+    DROP TABLE IF EXISTS M_Leihe.D_Kundenort;
+    
+    
+    
+    CREATE TABLE M_Leihe.D_Kundenort
+    (
+    ID_Kundenort integer     AUTO_INCREMENT Primary Key not null, 
+    PLZ          varchar(50)
+    );
+    
+    
+    INSERT INTO M_Leihe.D_Kundenort (PLZ)
+    SELECT 
+     DISTINCT(PLZ)
+    FROM test_db_1.Kunde;
+    
+    
+    
+    #--SELECT * from M_Leihe.D_Kundenort;
+    
+    
+    #--==== Tabelle D_Datum ====--
+    
+    
+    
+    
+    DROP TABLE IF EXISTS M_Leihe.D_Datum;
+    
+    
+    
+    CREATE TABLE M_Leihe.D_Datum
+    (
+    ID_Datum        integer     AUTO_INCREMENT Primary Key not null, 
+    Datum           datetime
+    );
+    #--Monat           integer,
+    #--Monatsname      varchar(50),
+    #--Quartal         integer,
+    #--Jahr            integer
+    #--);
+    
+    
+    
+    INSERT INTO M_Leihe.D_Datum (Datum)
+    SELECT 
+     DISTINCT(Ausleihdatum)
+    FROM test_db_1.Leihe
+    WHERE
+     Ausleihdatum is not NULL;
+    
+    
+    
+    #--SELECT * from M_Leihe.D_Datum;
+    
+    #--=============== Erstelle Faktentabelle ================--
+    
+    #--==== Tabelle F_Leihe ====--
+    
+    
+    
+    
+    DROP TEMPORARY TABLE IF EXISTS M_Leihe.T_Leihen;
+    
+    
+    
+    CREATE TEMPORARY TABLE M_Leihe.T_Leihen
+    (
+    select L1.ID_Kunde, L1.ID_Exemplar, L1.Ausleihdatum, L1.Rueckgabedatum from test_db_1.Leihe L1
+    join test_db_1.Leihe L2
+    on L1.ID_Kunde = L2.ID_Kunde AND L1.ID_Exemplar = L2.ID_Exemplar
+    );
+    
+     
+    
+    DROP TEMPORARY TABLE IF EXISTS M_Leihe.T_Leihen_2;
+    
+    
+    
+    CREATE TEMPORARY TABLE M_Leihe.T_Leihen_2
+    (
+    SELECT
+        ID_Kunde,
+        ID_Exemplar,
+        MAX(Ausleihdatum) AS Ausleihdatum,
+        MAX(Rueckgabedatum) AS Rueckgabedatum,
+        TIMESTAMPDIFF(DAY, MAX(Ausleihdatum), MAX(Rueckgabedatum)) AS Leihdauer
+    FROM
+        M_Leihe.T_Leihen
+    GROUP BY
+        ID_Kunde,
+        ID_Exemplar
+    );
+    
+    
+    
+    
+    DROP TABLE IF EXISTS M_Leihe.F_Leihe;
+    
+    
+    
+    
+    CREATE TABLE M_Leihe.F_Leihe
+    (
+    ID_Exemplar integer not null, 
+    ID_Kundenalter integer  not null, 
+    ID_Kundenort integer  not null, 
+    ID_Datum integer  not null, 
+    Kundenalter    integer
+    );
+    
+    
+    
+    INSERT INTO M_Leihe.F_Leihe 
+    SELECT L2.ID_Exemplar, KA.ID_Kundenalter, KO.ID_Kundenort, D.ID_Datum, L2.Leihdauer  FROM M_Leihe.T_Leihen_2 L2
+    JOIN M_Leihe.D_Datum AS D
+    ON L2.Ausleihdatum = D.Datum
+    JOIN test_db_1.Kunde AS K
+    ON K.ID_Kunde = L2.ID_Kunde
+    JOIN M_Leihe.D_Kundenalter AS KA
+    ON TIMESTAMPDIFF(YEAR, K.Geburtsdatum, NOW()) = KA.Kundenalter
+    JOIN M_Leihe.D_Kundenort AS KO
+    ON K.PLZ = KO.PLZ
+    
+    """
+
+
+    mysql_connection = connect(user=USER, password=PASSWORD, host=HOST, port=PORT)#, database=DATABASE)
+    cursor = mysql_connection.cursor()
+    cursor.execute(query_M_Leihe, multi=True)
+    cursor.close() 
 
 
