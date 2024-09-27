@@ -632,7 +632,9 @@ while 1:
     JOIN M_Leihe.D_Kundenalter AS KA
     ON TIMESTAMPDIFF(YEAR, K.Geburtsdatum, NOW()) = KA.Kundenalter
     JOIN M_Leihe.D_Kundenort AS KO
-    ON K.PLZ = KO.PLZ
+    ON K.PLZ = KO.PLZ;
+
+    DROP TABLE IF EXISTS M_Leihe.T_Test;
     
     """
 

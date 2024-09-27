@@ -1,0 +1,32 @@
+,Aktion,Datum,Fernleihe,ID_Exemplar,ID_Kunde,Titel,Autor,Jahr,Art,Kennung,Zugriffsort
+0,Leihe, 2024-10-01 11:00:00, False, 184, 3185, Wilde Schwäne, Jung Chang, 1991.0, Roman, zRy45129, qRv65907
+1,Leihe, 2024-10-01 12:00:00, False, 225, 3236, Kritik der reinen Vernunft, Immanuel Kant, 1781.0, Philosophie, lPh90743, RBM07364
+2,Leihe, 2024-10-01 13:00:00, False, 161, 948, Der Tod des Vergil, Hermann Broch, 1945.0, Roman, FCJ75034, Qwg21308
+3,Leihe, 2024-10-01 13:00:00, False, 184, 5108, Grande Sertão, João Guimarães Rosa, 1956.0, Roman, qRN31487, YhA17243
+4,Rückgabe, 2024-10-01 18:00:00, None, 13, 5536, Die große Reise, Jorge Semprún, 1963.0, Roman, Ocm29314, iQX07436
+5,Leihe, 2024-10-01 19:00:00, False, 189, 1687, Die Dämonen, Fjodor Dostojewski, 1871.0, Roman, Foj32158, eXx65890
+6,Leihe, 2024-10-01 22:00:00, False, 184, 3931, Von der Freiheit eines Christenmenschen, Martin Luther, 1520.0, Religion, Myf70528, KtQ58064
+7,Leihe, 2024-10-02 01:00:00, False, 231, 4665, Farm der Tiere, George Orwell, 1946.0, Roman, LTd96150, eaF35478
+8,Leihe, 2024-10-02 04:00:00, False, 212, 6261, Caspar Hauser oder Die Trägheit des Herzens, Jakob Wassermann, 1908.0, Roman, BQd82937, Fkf27830
+9,Leihe, 2024-10-02 04:00:00, False, 224, 3923, Hetärengespräche, Lukian von Samosata, 160.0, Sachbuch, IhD93785, fDO58463
+10,Leihe, 2024-10-02 04:00:00, False, 148, 3947, Der Fürst, Niccolò Machiavelli, 1513.0, Sachbuch, uBm12689, WFA65239
+11,Rückgabe, 2024-10-02 09:00:00, None, 11, 4222, Die Grenzen des Wachstums, Dennis L. Meadows, 1972.0, Sachbuch, eOs24895, zdg98652
+12,Rückgabe, 2024-10-02 13:00:00, None, 231, 4665, Farm der Tiere, George Orwell, 1946.0, Roman, LTd96150, eaF35478
+13,Leihe, 2024-09-28 01:00:00, False, 117, 6691, Inspector Jury sucht den Kennington-Smaragd, Martha Grimes, 1983.0, Roman, Omc12704, hQL23496
+14,Leihe, 2024-09-28 06:00:00, True, 219, 5927, Walden oder Leben in den Wäldern, Henry David Thoreau, 1854.0, Erzählung, ziy28053, rTv53702
+15,Leihe, 2024-09-28 10:00:00, True, 247, 2130, Die Wahrheit über den Fall D.," Carlo Lucentini, Lucentini Franco Fruttero", 1989.0, Roman, rdu62783, uxK70124
+16,Leihe, 2024-09-28 14:00:00, True, 137, 3198, Auf den Marmorklippen, Ernst Jünger, 1939.0, Erzählung, OYf56018, lIc84716
+17,Leihe, 2024-09-28 16:00:00, False, 227, 11, Okonkwo oder Das Alte stürzt, Chinua Achebe, 1958.0, Roman, cYR06742, ScQ63825
+18,Leihe, 2024-09-28 18:00:00, False, 80, 3327, Die Seherin von Prevorst, Justinus Kerner, 1829.0, Sachbuch, sIC27194, wWP64017
+19,Rückgabe, 2024-09-28 23:00:00, None, 247, 2130, Die Wahrheit über den Fall D.," Carlo Lucentini, Lucentini Franco Fruttero", 1989.0, Roman, rdu62783, uxK70124
+20,Leihe, 2024-09-29 00:00:00, False, 211, 3547, Berittener Bogenschütze, Brigitte Kronauer, 1986.0, Roman, haF86937, hyP80916
+21,Leihe, 2024-09-29 03:00:00, False, 165, 6447, Parzival, Wolfram von Eschenbach, 1200.0, Versepos, zJx46190, YNB26384
+22,Leihe, 2024-09-29 03:00:00, False, 247, 6593, Woyzeck, Georg Büchner, 1837.0, Drama, Kej82504, eCm32194
+23,Leihe, 2024-09-29 06:00:00, False, 224, 4459, Die Entdeckung des Himmels, Harry Mulisch, 1992.0, Roman, cGo73584, uGK87359
+24,Leihe, 2024-09-29 08:00:00, False, 198, 5076, Duineser Elegien, Rainer Maria Rilke, 1923.0, Lyrik, sUc68453, jzb67950
+25,Leihe, 2024-09-29 09:00:00, False, 146, 3598, Fabeln, Jean de La Fontaine, 1668.0, Fabeln, AMG94620, eVy80471
+26,Leihe, 2024-09-29 12:00:00, False, 245, 1116, Naked Lunch, William S. Burroughs, 1959.0, Roman, ljF69851, NjJ60175
+27,Leihe, 2024-09-29 12:00:00, False, 238, 4009, Buddenbrooks, Thomas Mann, 1901.0, Roman, hmG69237, PzB10567
+28,Leihe, 2024-09-29 15:00:00, False, 61, 659, Das Jazzbuch, Joachim-Ernst Berendt, 1953.0, Sachbuch, gup42089, nDk78935
+29,Leihe, 2024-09-29 18:00:00, False, 62, 5661, Der Mann ist tot, Wole Soyinka, 1972.0, Roman, OMz97350, Iqt03946
+30,Rückgabe, 2024-09-29 23:00:00, None, 224, 4459, Die Entdeckung des Himmels, Harry Mulisch, 1992.0, Roman, cGo73584, uGK87359
