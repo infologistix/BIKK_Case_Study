@@ -463,21 +463,26 @@ while 1:
     (
     ID_Exemplar integer Primary Key not null,
     Buch_ID integer, 
-    Genre varchar(50)
+    Genre varchar(50),
+    Herkunft varchar(50)
     );
     
+
     INSERT INTO M_Leihe.D_Buch
     SELECT 
-     DISTINCT(ID_Exemplar), E.ID_Buch, B.Art  
+     DISTINCT(E.ID_Exemplar), E.ID_Buch, B.Art, A.Herkunft  
     FROM 
      test_db_1.Exemplare AS E
     JOIN 
      test_db_1.Buch AS B
     ON 
-     E.ID_Buch = B.ID_Buch;
-    
-    
-    
+     E.ID_Buch = B.ID_Buch
+    JOIN 
+     test_db_1.Autor AS A
+    ON 
+     B.ID_Autor=A.ID_Autor
+    WHERE A.Autor is not NULL
+
     
     
     
