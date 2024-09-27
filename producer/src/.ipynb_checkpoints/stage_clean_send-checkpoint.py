@@ -183,7 +183,7 @@ while 1:
         dfd['Neukunden'].loc[dfd['Neukunden']['Hausnr'].isnull(), 'Hausnr'] = dfd['Neukunden'].loc[dfd['Neukunden']['Hausnr'].isnull(), 'Strasse'].apply(extract_hausnr)
         dfd['Neukunden']['Strasse'] = dfd['Neukunden']['Strasse'].str.split(expand=True)[0]
         # Convert Hausnr to int
-        dfd['Neukunden']['Hausnr'] = pd.to_numeric(dfd['Neukunden']['Hausnr']).astype(int)
+        dfd['Neukunden']['Hausnr'] = pd.to_numeric(dfd['Neukunden']['Hausnr']).astype('Int64', errors='ignore')
         
         # Geschlecht konsistent machen 
         #if not dfd['Neukunden']['Geschlecht'].filter(regex=).empty:
@@ -436,7 +436,8 @@ while 1:
     
     for Tabelle in dfs.keys():
         if Tabelle not in Statische_Tabellen:
-            dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append')     
+            if not dfs[Tabelle].empty:
+                dfs[Tabelle].to_sql(Tabelle, con=engine,schema=DATABASE, index=False, if_exists='append')     
         
 
 
