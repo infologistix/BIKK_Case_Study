@@ -99,10 +99,9 @@ try:
             if würfel < 0.7:
                 Fernleihe = "False"
             counter += 1.
-            delta = würfel * 6
+            delta = würfel * 23
             date += timedelta(hours=int(delta))
             #produce_ratio(topic, str(delta))
-            #produce_ratio(topic, str(date))
             if counter < 6:
                 buch, cust = action.leihe_buch()
                 produce_message(topic, "Leihe" + SEP + str(date) + SEP + Fernleihe, buch, bs, cust)
