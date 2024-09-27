@@ -13,6 +13,8 @@ create schema M_Leihe;
 
 DROP TABLE IF EXISTS M_Leihe.D_Buch;
 
+ 
+ 
 GO
 
 CREATE TABLE M_Leihe.D_Buch
