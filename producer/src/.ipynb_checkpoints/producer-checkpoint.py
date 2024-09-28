@@ -19,11 +19,11 @@ from datetime import datetime, timedelta
     CONF : Configuration for the Producer
 """
 START_NUM_CUST = 250
-NUM_SIMUL = 20000
+NUM_SIMUL = 200000
 SEP = "; "
 VERSION = "RB"
 INTERVALL = (0, 3)
-START_TIME = "24/09/28"
+START_TIME = "20/09/28"
 START_DATE = datetime.strptime(START_TIME, "%y/%m/%d")
 
 CONF = {'bootstrap.servers': 'broker:19092'}
@@ -60,8 +60,8 @@ def produce_message(topic: str,
     data = kind + data
     p.produce(topic, key=str(index), value=data, callback=delivery_report)
     p.poll(0)
-    sleep(randint(*INTERVALL))
-    # sleep(0.001)
+    #sleep(randint(*INTERVALL))
+    sleep(0.01)
     return data
 
 def produce_ratio(topic: str, ratio) -> str:
@@ -85,6 +85,7 @@ topics = np.random.choice(topic_choices, NUM_SIMUL, p=[0.05, 0.85, 0.1])
 
 action = transaktion_factory(START_NUM_CUST, bs.shape[0])
 counter = 0.
+costumer_count = 1
 
 buch_date_dict = {}
 date = START_DATE
@@ -104,7 +105,7 @@ try:
             #produce_ratio(topic, str(date))
             if counter < 6:
                 buch, cust = action.leihe_buch()
-                produce_message(topic, "Leihe; " + str(date) + "; " + Fernleihe, buch, bs, cust)
+                produce_message(topic, "Leihe" + SEP + str(date) + SEP + Fernleihe, buch, bs, cust)
                 # produce_message(topic, "Leihe", buch, bs, cust, Ausleihdatum, Rückgabedatum)
             elif counter%100 == 0:
                 p.flush()
@@ -115,14 +116,15 @@ try:
                 # produce_ratio(topic, ratio)
                 if würfel < ratio:
                     buch, cust = action.leihe_buch()
-                    produce_message(topic, "Leihe; " + str(date) + "; " + Fernleihe, buch, bs, cust)
+                    produce_message(topic, "Leihe" + SEP + str(date) + SEP + Fernleihe, buch, bs, cust)
                 else:
                     buch, cust = action.rückgabe_buch()
-                    produce_message(topic, "Rückgabe; " + str(date) + "; None", buch, bs, cust,)
+                    produce_message(topic, "Rückgabe" + SEP + str(date) + SEP + "None", buch, bs, cust,)
 
         elif topic=="Neukunden":
             action.add_customer()
-            produce_message(topic, "Neukunde; " + str(counter), action.c_count, df)
+            produce_message(topic, "Neukunde" + SEP + str(costumer_count + 500), action.c_count%500, df)
+            costumer_count += 1
         else:
             c_bew = randint(1, bew.shape[0] - 1)
             msg = produce_message(topic, "Bewertung", c_bew, bew)

@@ -19,11 +19,11 @@ from datetime import datetime, timedelta
     CONF : Configuration for the Producer
 """
 START_NUM_CUST = 250
-NUM_SIMUL = 20000
+NUM_SIMUL = 200000
 SEP = "; "
 VERSION = "RB"
 INTERVALL = (0, 3)
-START_TIME = "24/09/28"
+START_TIME = "20/09/28"
 START_DATE = datetime.strptime(START_TIME, "%y/%m/%d")
 
 CONF = {'bootstrap.servers': 'broker:19092'}
@@ -60,8 +60,8 @@ def produce_message(topic: str,
     data = kind + data
     p.produce(topic, key=str(index), value=data, callback=delivery_report)
     p.poll(0)
-    sleep(randint(*INTERVALL))
-    # sleep(0.001)
+    #sleep(randint(*INTERVALL))
+    sleep(0.01)
     return data
 
 def produce_ratio(topic: str, ratio) -> str:
@@ -123,7 +123,7 @@ try:
 
         elif topic=="Neukunden":
             action.add_customer()
-            produce_message(topic, "Neukunde" + SEP + str(costumer_count + 500), action.c_count, df)
+            produce_message(topic, "Neukunde" + SEP + str(costumer_count + 500), action.c_count%500, df)
             costumer_count += 1
         else:
             c_bew = randint(1, bew.shape[0] - 1)
